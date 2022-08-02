@@ -32,7 +32,6 @@ class AboutUsController extends Controller
         $data = $request->except('image');
 
         $data['image'] = $this->uploadImage($request, 'image', 'about_us');
-        $data['logo'] = $this->uploadImage($request, 'logo', 'about_us');
 
         $about_us = AboutUs::create($data);
 
@@ -61,7 +60,6 @@ class AboutUsController extends Controller
         $data = $request->except('image');
 
         $data['image'] = $this->uploadImage($request, 'image', 'about_us');
-        $data['logo'] = $this->uploadImage($request, 'logo', 'about_us');
 
         if ($old_image && isset($data['image'])) {
             Storage::disk('public')->delete($old_image);
