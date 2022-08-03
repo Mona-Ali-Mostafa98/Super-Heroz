@@ -42,6 +42,7 @@ class AboutUsController extends Controller
     {
         return view('admin.about_us.show',compact('about_us'));
     }
+
     public function edit(AboutUs $about_us)
     {
         return view('admin.about_us.edit', compact('about_us'));
@@ -76,4 +77,5 @@ class AboutUsController extends Controller
         }
         return redirect()->route('admin.about_us.index')
             ->with('success' , "تم الحذف بنجاح");
-    }}
+    }
+}

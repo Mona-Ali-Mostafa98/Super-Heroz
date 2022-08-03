@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\CenterClassController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -27,6 +28,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('about_us', AboutUsController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('galleries', GalleryController::class)->except('edit','update');
-
+    Route::resource('center_classes', CenterClassController::class);
 
 });
