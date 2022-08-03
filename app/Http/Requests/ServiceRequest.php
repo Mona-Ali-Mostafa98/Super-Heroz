@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AboutUsRequest extends FormRequest
+class ServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,6 +26,8 @@ class AboutUsRequest extends FormRequest
         return [
             'title' => 'required|string|min:5|max:255',
             'description' => 'required|string',
+            'advantage' => 'required|string',
+            'age' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status'=>'required'
         ];

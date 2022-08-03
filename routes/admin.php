@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialLinkController;
@@ -23,5 +24,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Route::resource('contact-us', ContactUsController::class)->only('index' , 'show' , 'destroy');
     Route::resource('sliders', SliderController::class);
     Route::resource('about_us', AboutUsController::class);
+    Route::resource('services', ServiceController::class);
 
 });

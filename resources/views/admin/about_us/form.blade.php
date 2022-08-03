@@ -12,7 +12,7 @@
     <label for="description" class="col-sm-2 col-form-label">الوصف</label>
     <div class="col-sm-10">
         <textarea name="description" id="description" rows="3" placeholder="ادخل الوصف"
-            class="col-sm-12 form-control @error('description') is-invalid @enderror">{{ old('desctiption', $about_us->description) }}</textarea>
+            class="col-sm-12 form-control @error('description') is-invalid @enderror">{{ old('description', $about_us->description) }}</textarea>
         @error('description')
             <p class="invalid-feedback">{{ $message }}</p>
         @enderror
@@ -36,9 +36,10 @@
     <label class="col-sm-2 col-form-label">الصوره</label>
     <div class="col-sm-10">
         <input name="image" type="file" id="image"
-            class="form-control mb-3 @error('image') is-invalid @enderror">
+            class="form-control mb-3 @error('image') is-invalid @enderror" value="{{ old('image', $about_us->image) }}">
         @error('image')
-            <p class="invalid-feedback">{{ $message }}</p>
+            <p class="invalid-feedback">{{ $message }}
+            </p>
         @enderror
         <img id="image" src="{{ asset('storage/' . $about_us->image) }}" style="height: 80px; width: 100px;"
             alt="no image uploaded">

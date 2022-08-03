@@ -61,6 +61,10 @@ class SliderController extends Controller
 
         $data['image'] = $this->uploadImage($request, 'image', 'sliders');
 
+        if(!$request->hasFile('image')){
+            unset($data['image']);
+        }
+
         if ($old_image && isset($data['image'])) {
             Storage::disk('public')->delete($old_image);
         }

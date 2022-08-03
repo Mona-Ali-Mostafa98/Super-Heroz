@@ -16,7 +16,7 @@ class SettingController extends Controller
     public function index()
     {
         return view('admin.settings.index', [
-            'settings' => Setting:: all()
+            'settings' => Setting:: first()->get()
         ]);
     }
 
@@ -44,10 +44,17 @@ class SettingController extends Controller
         $data['logo'] = $this->uploadImage($request, 'logo', 'settings');
         $data['image'] = $this->uploadImage($request, 'image', 'settings');
 
+        if(!$request->hasFile('image')){
+            unset($data['image']);
+        }
+        if(!$request->hasFile('logo')){
+            unset($data['logo']);
+        }
+
         if ($old_image && isset($data['image'])) {
             Storage::disk('public')->delete($old_image);
         }
-        if ($old_logo && isset($data['image'])) {
+        if ($old_logo && isset($data['logo'])) {
             Storage::disk('public')->delete($old_logo);
         }
 
