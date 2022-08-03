@@ -60,7 +60,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed fs-6" href="#">
+                <a class="nav-link collapsed fs-6" href="{{ route('admin.galleries.index') }}">
                     <i class="bi bi-info-circle"></i>
                     <span class="p-2">معرض الصور</span>
                 </a>
