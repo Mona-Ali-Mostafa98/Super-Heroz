@@ -1,0 +1,242 @@
+* {
+    direction: ltr;
+}
+
+.top-head ul li {
+    margin: 0 30px 0 0;
+}
+
+.top-head ul li i {
+    margin: 0 5px 0 0;
+}
+
+.bot-head .nav-menu li {
+    margin: 0 40px 0 0;
+}
+
+.menu-item-has-children>a:after {
+    margin: 0 0 0 7px;
+}
+
+.menu-item-has-children .sub-menu {
+    left: 0;
+    right: auto;
+}
+
+.top-head .social a {
+    margin: 0 15px 0 0;
+}
+
+.hero-s .item {
+    direction: ltr;
+}
+
+.categorie-s .block:after {
+    right: 0;
+    left: auto;
+}
+
+.f-top .f-item .f-icon,
+.f-top .f-item .f-data .soc a {
+    margin: 0 10px 0 0;
+}
+
+.search-area .form-group .form-control {
+    padding: 0 50px 0 0;
+}
+
+.search-area .form-group button {
+    right: 0;
+    left: auto;
+}
+
+.bot-head .h-extra .op-menu {
+    margin: 0 0 0 15px;
+}
+
+.s-wrap .kid-space .form-group>i,
+.s-wrap .kid-space .form-group .form-control:after,
+.s-wrap .kid-space .form-group .f-upload i {
+    left: auto;
+    right: 20px;
+}
+
+.s-wrap .kid-space #kid_medics .form-group h5:before {
+    left: 0;
+    right: auto;
+    margin: 0 10px 0 0;
+}
+
+.s-wrap .kid-space #kid_medics .form-group h5 {
+    padding: 0 0 0 25px;
+}
+
+
+.s-wrap .kid-space .form-group .chx-itm label span {
+    padding: 0 0 0 30px;
+}
+
+.s-wrap .kid-space .form-group .chx-itm label span:before {
+    left: 0;
+    right: auto;
+}
+
+.auth-wrap .c-card .auth-form .form-group .show-pass {
+    right: 25px;
+    left: auto;
+}
+
+.auth-wrap .c-card .log-img {
+    transform: scaleX(-1);
+}
+
+
+.auth-wrap .c-card .auth-form .form-group.has-extra label {
+    margin: 0 50px 0 0;
+}
+
+.auth-wrap .c-card .auth-form .form-group.has-extra label span:before {
+    margin: 0 10px 0 0;
+}
+
+.back-home a i {
+    transform: scaleX(-1);
+}
+
+.s-wrap .s-sidebar {
+    padding: 0 20px 0 0;
+}
+
+.s-wrap .s-sidebar .s-bottom li a:after {
+    transform: scaleX(-1);
+    float: right;
+}
+
+.s-wrap .s-sidebar .s-bottom li a {
+    border-left: 4px solid #EBEBEB;
+    border-right: 0;
+}
+
+.s-wrap .kids-list .kids-top .top-info .t-img {
+    margin: 0 15px 0 0;
+}
+
+.s-wrap .kids-list .kids-top .top-info,
+.s-wrap .kids-list .kids-top .t-data {
+    border-left: 0;
+    border-right: 1px solid rgb(185 185 184 / 40%);
+}
+
+.s-wrap .kids-list .kids-bottom .k-reports .report-item .r-inner .r-icon {
+    margin: 0 10px 0 0;
+}
+
+.s-wrap .kids-list .kids-bottom .k-msgs .msgs-body .msg-item .m-img {
+    left: -20px;
+    right: auto;
+}
+
+.s-wrap .kids-list .kids-bottom .k-msgs .msgs-body .msg-item.msg-in {
+    margin: 0 0 20px 30px;
+}
+
+.s-wrap .kids-list .kids-bottom .k-msgs .msgs-footer .form-group .form-control {
+    padding: 11px 60px 11px 15px !important;
+}
+
+.s-wrap .kids-list .kids-bottom .k-msgs .msgs-footer .form-group button {
+    right: 11px;
+    left: auto;
+    transform: scaleX(-1);
+}
+
+.s-wrap .c-head {
+    border-left: 15px solid #A6C437;
+    border-right: 1px solid #F8F8F8;
+}
+
+.s-wrap .my-kids .kid-item .k-data .k-img {
+    margin: 0 20px 0 0;
+}
+
+.s-wrap .notifications .kids-list .kids-bottom .k-msgs .msgs-body {
+    padding: 0 0 0 20px;
+}
+
+.contact-wrap .co-info li div>i {
+    margin: 0 15px 0 0;
+}
+
+.contact-wrap .co-info li a.facebook,
+.contact-wrap .co-info li a.twitter,
+.contact-wrap .co-info li a.instagram {
+    margin: 0 10px 0 0;
+}
+
+.policy-wrap ul li {
+    padding: 0 0 0 30px;
+}
+
+.policy-wrap ul li:before {
+    left: 0;
+    right: auto;
+    top: 6px;
+}
+
+.single-wrap .sing-sidebar {
+    padding: 0 0 0 30px;
+}
+
+.single-wrap .sing-sidebar h4:after {
+    left: 0;
+    right: auto;
+}
+
+.single-wrap .sing-sidebar ul li .i-img {
+    margin: 0 15px 0 0;
+}
+
+.single-wrap .sing-box .post-extra .p-item .i-img {
+    margin: 0 10px 0 0;
+}
+
+.single-wrap .sing-box .post-extra .p-item:last-of-type a {
+    text-align: right;
+}
+
+.single-wrap .sing-box .post-extra .p-item:last-of-type a .i-img {
+    margin: 0 0 0 10px;
+}
+
+.cardo .c-inner .c-img img:last-child {left: 50px;right: auto;}
+
+.cardo .c-inner .c-img {
+    padding: 0 0 0 30px;
+}
+
+.cardo:nth-of-type(even) .c-inner .c-img {
+    padding: 0 30px 0 0;
+}
+
+.cardo:nth-of-type(even) .c-inner .c-img img:last-child {
+    right: 50px;
+    left: auto;
+}
+
+@media (max-wdth:991px) {
+    .search-area .form-group .form-control {
+        padding: 0 20px 0 0;
+    }
+
+    .single-wrap .sing-sidebar {
+        padding: 0;
+    }
+
+    .single-wrap .sing-box .post-extra .p-item:last-of-type a {
+        text-align: initial;
+    }
+
+    .single-wrap .sing-box .post-extra .p-item:last-of-type a .i-img {
+        margin: 0 10px 0 0;
+    }
+}

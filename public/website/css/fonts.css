@@ -1,0 +1,19 @@
+@font-face {
+    font-family: f-lt;
+    src: url(../fonts/fairuz/ArbFONTS-Fairuz-Light.otf);
+}
+
+@font-face {
+    font-family: f-rg;
+    src: url(../fonts/fairuz/ArbFONTS-Fairuz-Normal.otf);
+}
+
+@font-face {
+    font-family: f-bd;
+    src: url(../fonts/fairuz/ArbFONTS-Fairuz-Bold.otf);
+}
+
+@font-face {
+    font-family: f-bk;
+    src: url(../fonts/fairuz/ArbFONTS-Fairuz-Black.otf);
+}
