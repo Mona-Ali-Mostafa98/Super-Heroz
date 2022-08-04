@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialLinkController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,5 +32,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('galleries', GalleryController::class)->except('edit','update');
     Route::resource('center_classes', CenterClassController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('users', UserController::class);
 
 });
