@@ -4,10 +4,11 @@
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
             <div class="col-sm-6 d-flex justify-content-start">
-                <h1 class="mb-2 fs-2">من نحن
-                    <a href="{{ route('admin.about_us.create') }}" class="ms-3 btn btn-outline-primary mb-2 ">
-                        <i class="bi bi-plus-lg"></i> أنشاء بارت من نحن </a>
-                </h1>
+                <h1 class="mb-2 fs-2">من نحن</h1>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-end">
+                <a href="{{ route('admin.about.create') }}" class=" btn btn-primary mb-2 ">
+                    <i class="bi bi-plus-lg ms-1"></i> أنشاء بارت من نحن </a>
             </div>
         </div>
         <!-- End Page Title -->
@@ -35,24 +36,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($all_about_us as $about_us)
+                                    @foreach ($all_about as $about)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            {{-- <td>{{ $about_us->id }}</td> --}}
-                                            <td><img src="{{ asset('storage/' . $about_us->image) }}" alt=""
+                                            {{-- <td>{{ $about->id }}</td> --}}
+                                            <td><img src="{{ asset('storage/' . $about->image) }}" alt=""
                                                     height="60" width="60"></td>
-                                            <td class="text-primary fw-bold">{{ $about_us->title }}</td>
-                                            <td>{{ $about_us->status }}</td>
-                                            <td>{{ $about_us->created_at->translatedFormat('l , j F Y') }}
+                                            <td class="text-primary fw-bold">{{ $about->title }}</td>
+                                            <td>{{ $about->status }}</td>
+                                            <td>{{ $about->created_at->translatedFormat('l , j F Y') }}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-start">
-                                                    <a href="{{ route('admin.about_us.show', $about_us->id) }}"
+                                                    <a href="{{ route('admin.about.show', $about->id) }}"
                                                         class=" btn btn-sm btn-success">عرض</a>
-                                                    <a href="{{ route('admin.about_us.edit', $about_us->id) }}"
+                                                    <a href="{{ route('admin.about.edit', $about->id) }}"
                                                         class=" me-2 btn btn-sm btn-primary">تعديل</a>
                                                     <form class=" me-2 form-inline" method="post"
-                                                        action="{{ route('admin.about_us.destroy', $about_us->id) }}">
+                                                        action="{{ route('admin.about.destroy', $about->id) }}">
                                                         @csrf
                                                         @method ('delete')
                                                         <button type="submit" class="btn btn-sm btn-danger "

@@ -15,67 +15,67 @@ class AboutUsController extends Controller
 
     public function index()
     {
-        $all_about_us = AboutUs:: all() ;
-        return view('admin.about_us.index', compact('all_about_us'));
+        $all_about = AboutUs:: all() ;
+        return view('admin.about.index', compact('all_about'));
     }
 
     public function create()
     {
-        $about_us = new AboutUs() ;
-        return view('admin.about_us.create' , compact('about_us'));
+        $about = new AboutUs() ;
+        return view('admin.about.create' , compact('about'));
     }
 
     public function store(AboutUsRequest $request)
     {
         $data = $request->except('image');
 
-        $data['image'] = $this->uploadImage($request, 'image', 'about_us');
+        $data['image'] = $this->uploadImage($request, 'image', 'about');
 
-        $about_us = AboutUs::create($data);
+        $about = AboutUs::create($data);
 
-        return redirect()->route('admin.about_us.index')
+        return redirect()->route('admin.about.index')
             ->with('success' , "تم الاضافه بنجاح");
 
     }
 
-    public function show(AboutUs $about_us)
+    public function show(AboutUs $about)
     {
-        return view('admin.about_us.show',compact('about_us'));
+        return view('admin.about.show',compact('about'));
     }
 
-    public function edit(AboutUs $about_us)
+    public function edit(AboutUs $about)
     {
-        return view('admin.about_us.edit', compact('about_us'));
+        return view('admin.about.edit', compact('about'));
     }
 
-    public function update(AboutUsRequest $request , AboutUs $about_us)
+    public function update(AboutUsRequest $request , AboutUs $about)
     {
-        $old_image = $about_us->image;
+        $old_image = $about->image;
         $data = $request->except('image');
 
-        $data['image'] = $this->uploadImage($request, 'image', 'about_us');
+        $data['image'] = $this->uploadImage($request, 'image', 'about');
 
         if(!$request->hasFile('image')){
             unset($data['image']);
         }
 
-        $about_us->update($data);
+        $about->update($data);
 
         if ($old_image && isset($data['image'])) {
             Storage::disk('public')->delete($old_image);
         }
 
-        return redirect()->route('admin.about_us.index')
+        return redirect()->route('admin.about.index')
             ->with('success',"تم التعديل بنجاح");
     }
 
-    public function destroy(AboutUs $about_us)
+    public function destroy(AboutUs $about)
     {
-        $about_us -> delete();
-        if ($about_us->image) {
-            Storage::disk('public')->delete($about_us->image);
+        $about -> delete();
+        if ($about->image) {
+            Storage::disk('public')->delete($about->image);
         }
-        return redirect()->route('admin.about_us.index')
+        return redirect()->route('admin.about.index')
             ->with('success' , "تم الحذف بنجاح");
     }
 }

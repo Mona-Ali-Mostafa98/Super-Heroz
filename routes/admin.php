@@ -27,7 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('social_links', SocialLinkController::class)->except('create','store');
     // Route::resource('contact-us', ContactUsController::class)->only('index' , 'show' , 'destroy');
     Route::resource('sliders', SliderController::class);
-    Route::resource('about_us', AboutUsController::class);
+    Route::resource('about', AboutUsController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('galleries', GalleryController::class)->except('edit','update');
     Route::resource('center_classes', CenterClassController::class);

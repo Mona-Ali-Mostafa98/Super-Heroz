@@ -9,7 +9,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed fs-6" href="{{ route('admin.about_us.index') }}">
+                <a class="nav-link collapsed fs-6" href="{{ route('admin.about.index') }}">
                     <i class="bi bi-gear"></i>
                     <span class="p-2">من نحن </span>
                 </a>
