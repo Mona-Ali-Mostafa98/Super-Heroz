@@ -27,9 +27,23 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,except,id',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|digits:10|unique:users,phone,except,id',  //|regex:/^([0-9\s\-\+\(\)]*)$/
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password' => 'required',Password::min(8),  //Hash::make($data['password']
         ];
     }
+    public function messages()
+{
+    return [
+        'name.required' => 'مطلوب ادخال الاسم الثلاثى',
+        'email.required' => 'مطلوب ادخال البريد الالكترونى',
+        'name.min' => 'مطلوب ادخال اسم المستخد كاملا',
+        'email.email' => 'مطلوب ادخال بريد الكترونى صحيح',
+        'phone.required' => 'مطلوب ادخال رقم الهاتف',
+        'phone.min' => ' مطلوب ادخال رقم هاتف لا يقل عن 10 ارقام',
+        
+        'title.required' => 'A title is required',
+        'body.required' => 'A message is required',
+    ];
+}
 }
