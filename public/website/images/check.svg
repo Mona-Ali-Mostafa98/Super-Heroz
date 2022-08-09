@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="89" viewBox="0 0 90 89">
+  <defs>
+    <filter id="Icon_ionic-ios-checkmark" x="16.863" y="23.595" width="56.065" height="47.933" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_220" data-name="Group 220" transform="translate(0.214 0.034)">
+    <ellipse id="Ellipse_32" data-name="Ellipse 32" cx="45" cy="44.5" rx="45" ry="44.5" transform="translate(-0.214 -0.034)" fill="#f7941d"/>
+    <g transform="matrix(1, 0, 0, 1, -0.21, -0.03)" filter="url(#Icon_ionic-ios-checkmark)">
+      <path id="Icon_ionic-ios-checkmark-2" data-name="Icon ionic-ios-checkmark" d="M66.2,17.231l-4.582-4.712a.985.985,0,0,0-.729-.312h0a.945.945,0,0,0-.729.312l-31.764,32-11.56-11.56a1.007,1.007,0,0,0-1.458,0l-4.634,4.634a1.037,1.037,0,0,0,0,1.484l14.58,14.58a4.611,4.611,0,0,0,3.046,1.484,4.831,4.831,0,0,0,3.02-1.432h.026l34.81-34.992A1.113,1.113,0,0,0,66.2,17.231Z" transform="translate(6.43 11.39)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

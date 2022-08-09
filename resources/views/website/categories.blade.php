@@ -53,18 +53,18 @@
                 </div>
             </div>
         </div> --}}
-        <div class="serv-s col-xs-12" style="background-image: url(images/slide.jpg);">
+        <div class="serv-s col-xs-12" style="background-image: url({{ asset('website/images/slide.jpg') }});">
             <div class="container">
                 <div>
                     <h3 data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">لا تتردد بالتواصل معنا .. سارع
                         بالحجز الأن!!</h3>
-                    <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">ما أصله؟ خلافاَ للاعتقاد السائد فإن
-                        لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد،
-                        مما يجعله أكثر من عام في القدم</p>
+                    <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">قم بحجز خدمه من خدماتنا لأطفالك الان
+                    </p>
                 </div>
 
                 <div>
-                    <a href="#" class="btn" data-aos="fade-up" data-aos-duration="700" data-aos-delay="400">احجز
+                    <a href="{{ route('website.reserve_service') }}" class="btn" data-aos="fade-up"
+                        data-aos-duration="700" data-aos-delay="400">احجز
                         الان.!</a>
                     <span data-aos="fade-up" data-aos-duration="700" data-aos-delay="600">
                         <i class="la la-whatsapp"></i>

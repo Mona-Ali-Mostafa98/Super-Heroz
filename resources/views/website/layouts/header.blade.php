@@ -173,7 +173,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <a href="#" class="btn">احجز الأن</a>
+                        <a href="{{ route('website.reserve_service') }}" class="btn">احجز الأن</a>
                         <button type="button" class="op-menu">
                             <i class="la la-bars"></i>
                         </button>

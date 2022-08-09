@@ -26,6 +26,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function kids()
+    {
+        return $this->hasMany(Kid::class, 'user_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

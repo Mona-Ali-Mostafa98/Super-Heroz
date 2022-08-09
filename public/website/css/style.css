@@ -3688,3 +3688,10 @@ html.off {
 .cardo:last-of-type {
     margin: 0;
 }
+
+.errors{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: red !important;
+    }

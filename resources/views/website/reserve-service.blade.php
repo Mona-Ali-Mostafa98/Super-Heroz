@@ -18,25 +18,25 @@
                     <form action="#" method="get">
                         <div class="form-group col-md-4 col-sm-6 col-xs-12">
                             <h5>اختر الخدمة</h5>
-                            <select class="form-control">
+                            <select name="service" class="form-control">
                                 <option selected disabled>يرجى الاختيار</option>
-                                <option>اختيار1</option>
-                                <option>اختيار1</option>
-                                <option>اختيار1</option>
+                                @foreach ($services as $service)
+                                    <option>{{ $service->title }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4 col-sm-6 col-xs-12">
                             <h5>ميعاد الاشتراك</h5>
-                            <input type="text" class="form-control" placeholder="0000/00/00">
-                            <i class="la la-calendar"></i>
+                            <input name="date" type="date" class="form-control" placeholder="0000/00/00">
+                            {{-- <i class="la la-calendar"></i> --}}
                         </div>
                         <div class="form-group col-md-4 col-sm-6 col-xs-12">
                             <h5>اختر الطفل</h5>
-                            <select class="form-control">
+                            <select name="child" class="form-control">
                                 <option selected disabled>يرجى الاختيار</option>
                                 <option>اختيار1</option>
                                 <option>اختيار1</option>
-                                <option>+ اضافة طفل اخر</option>
+                                {{-- <option><a href="{{ route('website.add_kid_view') }}">اضافة طفل اخر</a></option> --}}
                             </select>
                         </div>
                         <div class="form-group col-xs-12">
@@ -56,7 +56,7 @@
                         <i class="la la-close"></i>
                     </button>
                     <div class="modal-body">
-                        <img src="images/check.svg" alt="">
+                        <img src="{{ asset('website/images/check.svg') }}" alt="">
                         <p> تم ارسال تفاصيل الحجز الى
                             الإدارة وسيتم التواصل معكم
                             ...شكرا</p>

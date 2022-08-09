@@ -29,7 +29,7 @@ class ServiceController extends Controller
     }
 
     public function reserve_service(){
-
+        return view('website\reserve-service');
     }
 
     public function reserve_service_store(Request $request){

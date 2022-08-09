@@ -100,6 +100,13 @@
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
+                                        <div class="form-group col-md-6 col-xs-12">
+                                            <h5>صورة البروفايل</h5>
+                                            <input type="file" name="image" class="form-control">
+                                            @error('image')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
                                         <div class="form-group col-md-12 col-xs-12">
                                             <button type="submit" class="btn">تعديل</button>
                                         </div>

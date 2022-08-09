@@ -50,7 +50,7 @@
                     <img src="{{ asset('website/images/login4.png') }}" alt="" class="log-img log4">
                     <div class="auth-top col-xs-12">
                         <a href="{{ route('website.index') }}">
-                            <img src="{{asset('storage/' . $settings->logo) }}" alt="">
+                            <img src="{{ asset('storage/' . $settings->logo) }}" alt="">
                         </a>
                         <h3>تسجيل الدخول</h3>
                     </div>
@@ -59,20 +59,21 @@
                             @csrf
                             <div class="form-group col-md-6 col-xs-12">
                                 <h5> البريد الالكترونى</h5>
-                                <input name="email" type="text" class="form-control">
-                            @error('email')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
+                                <input name="email" type="text" class="form-control" value="{{ old('email') }}">
+                                @error('email')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6 col-xs-12">
                                 <h5>كلمة المرور</h5>
-                                <input name="password" type="password" class="form-control" id="password-field">
+                                <input name="password" type="password" class="form-control" id="password-field"
+                                    value="{{ old('password') }}">
                                 <button type="button" class="show-pass" toggle="#password-field">
                                     <i class="la la-eye"></i>
                                 </button>
                                 @error('password')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group col-xs-12 has-extra">
                                 <label>
@@ -156,13 +157,13 @@
 
 
     <!-- Javascript Files -->
-    <script src="{{ asset('website/js/jquery-2.2.2.min.js')}}"></script>
-    <script src="{{ asset('website/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('website/js/jquery.fancybox.min.js')}}"></script>
-    <script src="{{ asset('website/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{ asset('website/js/owl.carousel.min.js')}}"></script>
-    <script src="{{ asset('website/js/aos.js')}}"></script>
-    <script src="{{ asset('website/js/script.js')}}"></script>
+    <script src="{{ asset('website/js/jquery-2.2.2.min.js') }}"></script>
+    <script src="{{ asset('website/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('website/js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('website/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('website/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('website/js/aos.js') }}"></script>
+    <script src="{{ asset('website/js/script.js') }}"></script>
 </body>
 
 </html>
