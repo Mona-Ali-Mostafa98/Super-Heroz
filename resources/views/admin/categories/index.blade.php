@@ -9,7 +9,6 @@
             <div class="col-sm-6 d-flex justify-content-end">
                 <a href="{{ route('admin.categories.create') }}" class="btn btn-primary mb-2">
                     <i class="bi bi-plus-lg ms-1"></i> أنشاء قسم </a>
-                </h1>
             </div>
         </div>
         <!-- End Page Title -->

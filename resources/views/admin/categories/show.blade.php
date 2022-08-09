@@ -7,9 +7,8 @@
                 <h1 class="mb-2 fs-2">أقسام المركز</h1>
             </div>
             <div class="col-sm-6 d-flex justify-content-end">
-                <a href="{{ route('admin.categories.index') }}" class="btn btn-primary mb-2 "><i
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-primary mb-2"><i
                         class="bi bi-caret-left-fill ms-1"></i> رجوع</a>
-                </h1>
             </div>
         </div><!-- End Page Title -->
         <section class="section">

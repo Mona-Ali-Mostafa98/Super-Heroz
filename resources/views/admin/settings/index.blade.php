@@ -4,7 +4,7 @@
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
             <div class="col-sm-6 d-flex justify-content-start">
-                <h1 class="mb-2 fs-2">Settings </h1>
+                <h1 class="mb-2 fs-2">الأعدادات </h1>
             </div>
         </div>
         <!-- End Page Title -->
@@ -14,7 +14,7 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4 mb-3">All Settings</h5>
+                            <h5 class="card-title fs-4 mb-3">أعدادات الموقع </h5>
 
                             @include('admin.alerts')
 
@@ -30,24 +30,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($settings as $setting)
-                                        <tr>
-                                            <td>{{ $setting->id }}</td>
-                                            <td><img src="{{ asset('storage/' . $setting->logo) }}"
-                                                    style="height: 60px; width: 60px;" alt=""></td>
-                                            <td>{{ $setting->title }}</td>
-                                            <td>{{ $setting->created_at->translatedFormat('l , j F Y') }}</td>
-                                            <td>{{ $setting->updated_at->toDateString() }}</td>
-                                            <td>
-                                                <div class="d-flex justify-content-start">
-                                                    <a href="{{ route('admin.settings.show', $setting->id) }}"
-                                                        class="btn btn-sm btn-success">View</a>
-                                                    <a href="{{ route('admin.settings.edit', $setting->id) }}"
-                                                        class="me-2  btn btn-sm btn-primary">Edit</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    {{-- @foreach ($settings as $setting) --}}
+                                    <tr>
+                                        <td>{{ $settings->id }}</td>
+                                        <td><img src="{{ asset('storage/' . $settings->logo) }}"
+                                                style="height: 100px; width: 150px;" alt=""></td>
+                                        <td>{{ $settings->title }}</td>
+                                        <td>{{ $settings->created_at->translatedFormat('l , j F Y') }}</td>
+                                        <td>{{ $settings->updated_at->translatedFormat('l , j F Y') }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-start">
+                                                <a href="{{ route('admin.settings.show', $settings->id) }}"
+                                                    class="btn btn-sm btn-success">View</a>
+                                                <a href="{{ route('admin.settings.edit', $settings->id) }}"
+                                                    class="me-2  btn btn-sm btn-primary">Edit</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {{-- @endforeach --}}
                                 </tbody>
                             </table>
                         </div>

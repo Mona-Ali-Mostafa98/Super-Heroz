@@ -7,8 +7,8 @@
                 <h1 class="mb-2 fs-2">فصول المركز</h1>
             </div>
             <div class="col-sm-6 d-flex justify-content-end">
-                <a href="{{ route('admin.center_classes.create') }}" class="ms-3 btn btn-primary mb-2 ">
-                    <i class="bi bi-plus-lg"></i> أضافة فصل</a>
+                <a href="{{ route('admin.center_classes.create') }}" class="btn btn-primary mb-2 ">
+                    <i class="bi bi-plus-lg ms-1"></i> أضافة فصل</a>
             </div>
         </div><!-- End Page Title -->
         <section class="section">

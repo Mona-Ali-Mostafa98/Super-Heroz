@@ -7,8 +7,8 @@
                 <h1 class="mb-2 fs-2">الصور</h1>
             </div>
             <div class="col-sm-6 d-flex justify-content-end">
-                <a href="{{ route('admin.galleries.index') }}" class="ms-3 btn btn-primary mb-2 "><i
-                        class="bi bi-caret-left-fill"></i> رجوع</a>
+                <a href="{{ route('admin.galleries.index') }}" class="btn btn-primary mb-2 "><i
+                        class="bi bi-caret-left-fill ms-1"></i> رجوع</a>
             </div>
 
         </div><!-- End Page Title -->

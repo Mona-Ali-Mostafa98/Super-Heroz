@@ -7,7 +7,7 @@
                 <h1 class="mb-2 fs-2">من نحن</h1>
             </div>
             <div class="col-sm-6 d-flex justify-content-end">
-                <a href="{{ route('admin.about.index') }}" class="ms-1btn btn-primary mb-2 "><i
+                <a href="{{ route('admin.about.index') }}" class="btn btn-primary mb-2 "><i
                         class="bi bi-caret-left-fill ms-1"></i> رجوع</a>
             </div>
         </div><!-- End Page Title -->

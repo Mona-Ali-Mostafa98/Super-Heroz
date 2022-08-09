@@ -4,10 +4,11 @@
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
             <div class="col-sm-6 d-flex justify-content-start">
-                <h1 class="mb-2 fs-2">الأعدادات
-                    <a href="{{ route('admin.settings.index') }}" class="ms-3 btn btn-outline-primary mb-2 "><i
-                            class="bi bi-caret-left-fill"></i> Back</a>
-                </h1>
+                <h1 class="mb-2 fs-2">الأعدادات</h1>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-end">
+                <a href="{{ route('admin.settings.index') }}" class="btn btn-primary mb-2 "><i
+                        class="bi bi-caret-left-fill ms-1"></i>رجوع</a>
             </div>
         </div><!-- End Page Title -->
         <section class="section">
@@ -24,13 +25,14 @@
                                 <div class="row mb-4">
                                     <label class="col-sm-2 col-form-label">اللوجو</label>
                                     <div class="col-sm-10">
-                                        <input name="logo" type="file" id="logo"
+                                        <input name="logo" type="file"
+                                            onchange="document.getElementById('logo').src = window.URL.createObjectURL(this.files[0])"
                                             class="form-control mb-3 @error('logo') is-invalid @enderror">
                                         @error('logo')
                                             <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror
                                         <img id="logo" src="{{ asset('storage/' . $setting->logo) }}"
-                                            style="height: 80px; width: 100px;" alt="no logo uploaded">
+                                            style="height: 100px; width: 150px;" alt="no logo uploaded">
                                     </div>
                                 </div>
 
@@ -60,13 +62,14 @@
                                 <div class="row mb-4">
                                     <label class="col-sm-2 col-form-label">صوره للموقع</label>
                                     <div class="col-sm-10">
-                                        <input name="image" type="file" id="image"
+                                        <input name="image" type="file"
+                                            onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
                                             class="form-control mb-3 @error('image') is-invalid @enderror">
                                         @error('image')
                                             <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror
                                         <img id="image" src="{{ asset('storage/' . $setting->image) }}"
-                                            style="height: 80px; width: 100px;" alt="no image uploaded">
+                                            style="height: 100px; width: 150px;" alt="no image uploaded">
                                     </div>
                                 </div>
 

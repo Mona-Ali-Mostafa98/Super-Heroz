@@ -4,10 +4,11 @@
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
             <div class="col-sm-6 d-flex justify-content-start">
-                <h1 class="mb-2 fs-2">الخدمات
-                    <a href="{{ route('admin.services.create') }}" class="ms-3 btn btn-outline-primary mb-2 ">
-                        <i class="bi bi-plus-lg"></i> أنشاء خدمه </a>
-                </h1>
+                <h1 class="mb-2 fs-2">الخدمات</h1>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-end">
+                <a href="{{ route('admin.services.create') }}" class="btn btn-primary mb-2 ">
+                    <i class="bi bi-plus-lg ms-1"></i> أنشاء خدمه </a>
             </div>
         </div>
         <!-- End Page Title -->

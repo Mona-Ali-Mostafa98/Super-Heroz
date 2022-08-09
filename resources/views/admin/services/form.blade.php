@@ -55,7 +55,8 @@
 <div class="row mb-4">
     <label class="col-sm-2 col-form-label">الصوره</label>
     <div class="col-sm-10">
-        <input name="image" type="file" id="image"
+        <input name="image" type="file"
+            onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
             class="form-control mb-3 @error('image') is-invalid @enderror">
         @error('image')
             <p class="invalid-feedback">{{ $message }}</p>

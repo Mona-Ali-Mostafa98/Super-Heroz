@@ -4,10 +4,11 @@
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
             <div class="col-sm-6 d-flex justify-content-start">
-                <h1 class="mb-2 fs-2"> روابط التواصل الاجتماعى
-                    <a href="{{ route('admin.social_links.index') }}" class="ms-3 btn btn-outline-primary mb-2 "><i
-                            class="bi bi-caret-left-fill"></i> رجوع</a>
-                </h1>
+                <h1 class="mb-2 fs-2"> روابط التواصل الاجتماعى</h1>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-end">
+                <a href="{{ route('admin.social_links.index') }}" class="ms-3 btn btn-primary mb-2 "><i
+                        class="bi bi-caret-left-fill ms-1"></i> رجوع</a>
             </div>
         </div><!-- End Page Title -->
         <section class="section">
