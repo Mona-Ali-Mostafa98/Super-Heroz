@@ -52,6 +52,8 @@ Route::prefix('website')->name('website.')->group(function () {
 
 
     Route::get('/add_kid_view', [UserController::class, 'add_kid_view'])->name('add_kid_view');
+    Route::post('/add_kid/store', [UserController::class, 'add_kid'])->name('add_kid.store');
+    Route::get('/kids', [UserController::class, 'kids'])->name('kids');
 
 
 
