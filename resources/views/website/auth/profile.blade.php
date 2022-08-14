@@ -41,7 +41,7 @@
                                     <a href="{{ route('website.profile') }}">الملف الشخصي</a>
                                 </li>
                                 <li>
-                                    <a href="#">اطفالى</a>
+                                    <a href="{{ route('website.user.kids') }}">اطفالى</a>
                                 </li>
                                 <li>
                                     <a href="#">الاشعارات</a>
@@ -59,15 +59,16 @@
                             <div class="personal-data">
                                 <div class="p-top">
                                     <span>رقم الجوال :{{ $user->phone }}</span>
-                                    <a href="#">
+                                    <a href="{{ route('website.forgot.password.form') }}">
                                         <i class="la la-lock"></i>
                                         تعديل كلمة المرور
                                     </a>
                                 </div>
                                 <div class="p-form">
-                                    <form action="{{ route('website.profile.update', $user->id) }}" method="post">
+                                    <form action="{{ route('website.profile.update', $user->id) }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
-                                        @method('put')
+                                        @method('PUT')
                                         <div class="form-group col-md-6 col-xs-12">
                                             <h5>اسم ولى الامر ثلاثي</h5>
                                             <input name="name" type="text" class="form-control"
@@ -102,10 +103,13 @@
                                         </div>
                                         <div class="form-group col-md-6 col-xs-12">
                                             <h5>صورة البروفايل</h5>
-                                            <input type="file" name="image" class="form-control">
+                                            <input type="file" name="image" class="form-control mb-3"
+                                                onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                                             @error('image')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
+                                            <img id="image" src="{{ asset('storage/' . $user->image) }}"
+                                                style="height: 80px; width: 100px;" alt="no image uploaded">
                                         </div>
                                         <div class="form-group col-md-12 col-xs-12">
                                             <button type="submit" class="btn">تعديل</button>

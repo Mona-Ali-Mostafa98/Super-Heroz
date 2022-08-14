@@ -1,6 +1,7 @@
-<div class="wrapper col-xs-12">
+@extends('website.layout')
+@section('content')
     <main class="main-content col-xs-12">
-        <div class="breads col-xs-12" style="background-image: url(images/slide.jpg);">
+        <div class="breads col-xs-12" style="background-image: url({{ asset('website/images/slide.jpg') }});">
             <div class="container">
                 <h3> اطفالى</h3>
                 <ul>
@@ -23,20 +24,24 @@
                         </button>
                         <div class="s-top">
                             <div class="s-img">
-                                <img src="images/pic.png" alt="">
+                                @if (!$user->image == null)
+                                    <img src="{{ asset('storage/' . $user->image) }}" alt="">
+                                @else
+                                    <img src="{{ asset('website/images/default_image.jpg') }}" alt="">
+                                @endif
                             </div>
                             <div class="s-data">
-                                <h3>خديجة عبد الله</h3>
-                                <span>05254652155</span>
+                                <h3>{{ $user->name }}</h3>
+                                <span>{{ $user->phone }}</span>
                             </div>
                         </div>
                         <div class="s-bottom">
                             <ul>
                                 <li>
-                                    <a href="#">الملف الشخصي</a>
+                                    <a href="{{ route('website.profile') }}">الملف الشخصي</a>
                                 </li>
                                 <li class="active">
-                                    <a href="#">اطفالى</a>
+                                    <a href="{{ route('website.user.kids') }}">اطفالى</a>
                                 </li>
                                 <li>
                                     <a href="#">الاشعارات</a>
@@ -50,7 +55,7 @@
                         <div class="c-head">
                             <h3>اطفالى</h3>
                         </div>
-                        <a href="#" class="btn btn-orange">
+                        <a href="{{ route('website.add_kid_view') }}" class="btn btn-orange">
                             <i class="la la-plus"></i>
                             اضافة طفل
                         </a>
@@ -58,38 +63,27 @@
                     <div class="c-card col-xs-12">
                         <div class="card-inner">
                             <div class="my-kids">
-                                <div class="empty-kids-area" style="display: none;">
-                                    <img src="images/empty.png" alt="">
-                                    <p>لم تقم بإضافة اطفال</p>
-                                </div>
-                                <div class="kid-item active">
-                                    <div class="k-data">
-                                        <div class="k-img">
-                                            <img src="images/pic.png" alt="">
+                                @forelse ($user->kids as $kid)
+                                    <div class="kid-item active">
+                                        <div class="k-data">
+                                            <div class="k-img">
+                                                <img src="{{ asset('storage/' . $kid->recent_kid_photo) }}" alt="">
+                                            </div>
+                                            <div class="k-info">
+                                                <h3>{{ $kid->kid_name }}</h3>
+                                                <span>{{ $kid->educational_level }}</span>
+                                            </div>
                                         </div>
-                                        <div class="k-info">
-                                            <h3>اسم الطفل</h3>
-                                            <span>الصف الأول الابتدائي</span>
-                                        </div>
-                                    </div>
-                                    <div class="k-status">
-                                        <span>مفعل</span>
-                                    </div>
-                                </div>
-                                <div class="kid-item">
-                                    <div class="k-data">
-                                        <div class="k-img">
-                                            <img src="images/pic.png" alt="">
-                                        </div>
-                                        <div class="k-info">
-                                            <h3>اسم الطفل</h3>
-                                            <span>الصف الأول الابتدائي</span>
+                                        <div class="k-status">
+                                            <span>مفعل</span>
                                         </div>
                                     </div>
-                                    <div class="k-status">
-                                        <span>غير مفعل</span>
+                                @empty
+                                    <div class="empty-kids-area">
+                                        <img src="{{ asset('website/images/empty.png') }}" alt="">
+                                        <p>لم تقم بإضافة اطفال</p>
                                     </div>
-                                </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -97,3 +91,4 @@
             </div>
         </div>
     </main>
+@endsection

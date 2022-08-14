@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +22,10 @@ class Kid extends Model
     {
         return $this->hasMany(PersonsTakeKid::class, 'kid_id', 'id');
     }
+
+    public function getAgeAttribute()
+{
+    return Carbon::parse($this->attributes['birth_date'])->age;
+}
 
 }
