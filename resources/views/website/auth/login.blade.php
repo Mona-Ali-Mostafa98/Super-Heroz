@@ -53,9 +53,10 @@
                             <img src="{{ asset('storage/' . $settings->logo) }}" alt="">
                         </a>
                         <h3>تسجيل الدخول</h3>
+                        @include('website.alerts')
                     </div>
                     <div class="auth-form col-xs-12">
-                        <form action="{{ route('website.dologin') }}" method="post">
+                        <form action="{{ route('website.dologin') }}" method="POST">
                             @csrf
                             <div class="form-group col-md-6 col-xs-12">
                                 <h5> البريد الالكترونى</h5>
@@ -80,7 +81,7 @@
                                     <input type="checkbox">
                                     <span>حفظ بيانات الدخول</span>
                                 </label>
-                                <a href="#" data-toggle="modal" data-target="#change_pass">نسيت كلمة المرور؟</a>
+                                <a href="{{ route('website.forgot.password.form') }}">نسيت كلمة المرور؟</a>
                             </div>
                             <div class="form-group col-xs-12 has-btn">
                                 <button type="submit" class="btn">دخول</button>

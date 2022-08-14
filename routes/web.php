@@ -46,14 +46,18 @@ Route::prefix('website')->name('website.')->group(function () {
 
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/dologin', [UserController::class, 'dologin'])->name('dologin');
-    // Route::post('/reset_password', [UserController::class, 'dologin'])->name('dologin');
+
+    Route::get('/password/forgot',[UserController::class,'showForgotForm'])->name('forgot.password.form');
+    Route::post('/password/forgot',[UserController::class,'sendResetLink'])->name('forgot.password.link');
+    Route::get('/password/reset/{token}',[UserController::class,'showResetForm'])->name('reset.password.form');
+    Route::post('/password/reset',[UserController::class,'resetPassword'])->name('reset.password');
 
     Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
 
     Route::get('/add_kid_view', [UserController::class, 'add_kid_view'])->name('add_kid_view');
     Route::post('/add_kid/store', [UserController::class, 'add_kid'])->name('add_kid.store');
-    Route::get('/kids', [UserController::class, 'kids'])->name('kids');
+    Route::get('/user/kids', [UserController::class, 'kids'])->name('user.kids');
 
 
 

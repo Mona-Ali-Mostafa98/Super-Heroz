@@ -1755,6 +1755,12 @@ button {
     font-size: 17px;
 }
 
+.auth-wrap .auth-top span {
+    /* color: #3c763d; */
+    font-family: 'f-bd';
+    font-size: 17px;
+}
+
 .auth-wrap .c-card .auth-form {
     float: none;
     margin: 0 auto;

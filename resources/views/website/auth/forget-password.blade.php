@@ -16,13 +16,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#00a650">
 
     <!-- Css Files -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/bootstrap-rtl.min.css" rel="stylesheet">
-    <link href="css/style-res.css" rel="stylesheet">
-   <!-- <link href="css/style-en.css" rel="stylesheet"> -->
+    <link href="{{ asset('website/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('website/css/bootstrap-rtl.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('website/css/style-res.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('website/css/style-en.css') }}" rel="stylesheet"> -->
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('website/images/favicon.png') }}">
 
 </head>
 
@@ -33,51 +33,55 @@
 
         </div>
     </div>
-    
+
     <div class="wrapper col-xs-12">
         <main class="main-content col-xs-12">
             <div class="back-home col-xs-12">
-                <a href="#">
+                <a href="{{ route('website.index') }}">
                     <i class="la la-angle-right"></i>
                     عودة للصفحة الرئيسية
                 </a>
             </div>
             <div class="auth-wrap col-xs-12">
                 <div class="c-card forgot col-xs-12">
-                    <img src="images/login1.png" alt="" class="log-img log1">
-                    <img src="images/login2.png" alt="" class="log-img log2">
-                    <img src="images/login3.png" alt="" class="log-img log3">
-                    <img src="images/login4.png" alt="" class="log-img log4">
+                    <img src="{{ asset('website/images/login1.png') }}" alt="" class="log-img log1">
+                    <img src="{{ asset('website/images/login2.png') }}" alt="" class="log-img log2">
+                    <img src="{{ asset('website/images/login3.png') }}" alt="" class="log-img log3">
+                    <img src="{{ asset('website/images/login4.png') }}" alt="" class="log-img log4">
                     <div class="auth-top col-xs-12">
-                    <img src="images/forget.png" alt="">
-                    <h3>نسيت كلمة المرور</h3>
-                        <p>لكتب بريدك الالكترونى او هاتفك المسجل بالموقع 
-وسيتم ارسال كود مكون من أربعة ارقام</p>
-                </div>
-                <div class="auth-form col-xs-12">
-                    <form action="#" method="get">
-                        
-                        <div class="form-group col-xs-12">
-                            <input type="text" class="form-control" placeholder="رقم الجوا ل او البريد الالكترونى">
-                        </div>
-                        <div class="form-group col-xs-12 has-btn">
-                            <button type="submit" class="btn">ارسال</button>
-                        </div>
-                    </form>
-                </div>
+                        <img src="{{ asset('website/images/forget.png') }}" alt="">
+                        <h3>نسيت كلمة المرور</h3>
+                        <p>اكتب عنوان البريد الالكترونى المسجل بالموقع و سيتم ارسال رابط لاعادة تعين كلمة المرور</p>
+                        @include('website.alerts')
+                    </div>
+                    <div class="auth-form col-xs-12">
+                        <form action="{{ route('website.forgot.password.link') }}" method="POST">
+                            @csrf
+                            <div class="form-group col-xs-12">
+                                <input type="text" class="form-control" name="email" value="{{ old('email') }}"
+                                    placeholder="رقم الجوا ل او البريد الالكترونى" required autofocus>
+                                @error('email')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 has-btn">
+                                <button type="submit" class="btn">ارسال</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
-    
+
     <!-- Javascript Files -->
-    <script src="js/jquery-2.2.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{ asset('website/js/jquery-2.2.2.min.js') }}"></script>
+    <script src="{{ asset('website/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('website/js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('website/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('website/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('website/js/aos.js') }}"></script>
+    <script src="{{ asset('website/js/script.js') }}"></script>
 </body>
 
 </html>

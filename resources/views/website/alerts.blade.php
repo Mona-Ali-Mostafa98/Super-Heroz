@@ -1,5 +1,11 @@
  @if (session()->has('success'))
-     <div class="alert alert-success">
+     <span class="alert alert-success">
          {{ session('success') }}
-     </div>
+     </span>
+ @endif
+
+ @if (session()->has('error'))
+     <span class="alert alert-danger">
+         {{ session('error') }}
+     </span>
  @endif
