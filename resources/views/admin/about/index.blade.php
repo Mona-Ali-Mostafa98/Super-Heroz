@@ -56,8 +56,8 @@
                                                         action="{{ route('admin.about.destroy', $about->id) }}">
                                                         @csrf
                                                         @method ('delete')
-                                                        <button type="submit" class="btn btn-sm btn-danger "
-                                                            onclick="return confirm('هل انت متاكد من حذف هذا العنصر؟')">حذف</button>
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger show_confirm">حذف</button>
                                                     </form>
                                                 </div>
                                             </td>

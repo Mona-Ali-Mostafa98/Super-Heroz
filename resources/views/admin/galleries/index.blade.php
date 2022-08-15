@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <h5 class="card-title fs-4 mb-3">كل الصور</h5>
 
-                            @include('admin.alerts')
+                            {{-- @include('admin.alerts') --}}
 
                             <table class="table table-hover table-striped table-bordered border-dark" style="width: 100%">
                                 <thead>
@@ -50,8 +50,8 @@
                                                         action="{{ route('admin.galleries.destroy', $gallery->id) }}">
                                                         @csrf
                                                         @method ('delete')
-                                                        <button type="submit" class="btn btn-sm btn-danger "
-                                                            onclick="return confirm('هل انت متاكد من حذف هذا العنصر؟')">حذف</button>
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger show_confirm">حذف</button>
                                                     </form>
                                                 </div>
                                             </td>

@@ -51,7 +51,7 @@
                     <div class="auth-top col-xs-12">
                         <img src="{{ asset('website/images/password.png') }}" alt="">
                         <h3>تعديل كلمة المرور</h3>
-                        @include('website.alerts')
+                        {{-- @include('website.alerts') --}}
                     </div>
                     <div class="auth-form col-xs-12">
                         <form action="{{ route('website.reset.password') }}" method="POST">
@@ -106,6 +106,8 @@
     <script src="{{ asset('website/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('website/js/aos.js') }}"></script>
     <script src="{{ asset('website/js/script.js') }}"></script>
+
+    @include('sweetalert::alert')
 
 </body>
 

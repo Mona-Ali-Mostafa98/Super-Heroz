@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title fs-4 mb-3">أعدادات الموقع </h5>
 
-                            @include('admin.alerts')
+                            {{-- @include('admin.alerts') --}}
 
                             <table class="table table-hover table-striped table-bordered border-dark" style="width: 100%">
                                 <thead>

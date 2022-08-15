@@ -52,7 +52,7 @@
                         <img src="{{ asset('website/images/forget.png') }}" alt="">
                         <h3>نسيت كلمة المرور</h3>
                         <p>اكتب عنوان البريد الالكترونى المسجل بالموقع و سيتم ارسال رابط لاعادة تعين كلمة المرور</p>
-                        @include('website.alerts')
+                        {{-- @include('website.alerts') --}}
                     </div>
                     <div class="auth-form col-xs-12">
                         <form action="{{ route('website.forgot.password.link') }}" method="POST">
@@ -82,6 +82,9 @@
     <script src="{{ asset('website/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('website/js/aos.js') }}"></script>
     <script src="{{ asset('website/js/script.js') }}"></script>
+
+    @include('sweetalert::alert')
+
 </body>
 
 </html>

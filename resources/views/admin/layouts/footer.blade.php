@@ -21,6 +21,35 @@
 
 @include('sweetalert::alert')
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+
+        var form = $(this).closest("form");
+
+        var name = $(this).data("name");
+
+        event.preventDefault();
+
+        swal({
+                title: `هل انت متاكد من حذف هذا العنصر ؟`,
+                text: "أذا قمت بحذف هذا العنصر لن تتمكن من استرجاعه مره اخرى !",
+                icon: "warning",
+                buttons: ['لا', 'نعم'],
+                dangerMode: true,
+            })
+
+            .then((willDelete) => {
+
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+</script>
+
 </body>
 
 </html>

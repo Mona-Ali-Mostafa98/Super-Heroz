@@ -37,11 +37,11 @@
 
     <div class="wrapper col-xs-12">
 
-        @if (session()->has('success'))
+        {{-- @if (session()->has('success'))
             <div class="alert alert-success">
                 <h4>{{ session('success') }}</h4>
             </div>
-        @endif
+        @endif --}}
 
         <header class="main-head col-xs-12">
             <div class="top-head col-xs-12">

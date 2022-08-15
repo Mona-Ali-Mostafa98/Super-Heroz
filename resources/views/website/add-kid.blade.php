@@ -15,11 +15,11 @@
         <div class="s-wrap col-xs-12">
             <div class="container">
                 <div class="kid-space col-xs-12">
-                    @if (session()->has('error'))
+                    {{-- @if (session()->has('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
                         </div>
-                    @endif
+                    @endif --}}
 
                     <form action="{{ route('website.add_kid.store') }}" method="post" enctype="multipart/form-data">
                         @csrf

@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <h5 class="card-title fs-4 mb-3">كل السليدرز</h5>
 
-                            @include('admin.alerts')
+                            {{-- @include('admin.alerts') --}}
 
                             <table class="table table-hover table-striped table-bordered border-dark" style="width: 100%">
                                 <thead>
@@ -45,18 +45,20 @@
                                             <td>{{ $slider->status }}</td>
                                             <td>{{ $slider->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
                                             </td>
-                                            <td class="d-flex justify-content-start">
-                                                <a href="{{ route('admin.sliders.show', $slider->id) }}"
-                                                    class=" btn btn-sm btn-success">عرض</a>
-                                                <a href="{{ route('admin.sliders.edit', $slider->id) }}"
-                                                    class=" me-2 btn btn-sm btn-primary">تعديل</a>
-                                                <form class=" me-2 form-inline" method="post"
-                                                    action="{{ route('admin.sliders.destroy', $slider->id) }}">
-                                                    @csrf
-                                                    @method ('delete')
-                                                    <button type="submit" class="btn btn-sm btn-danger "
-                                                        onclick="return confirm('هل انت متاكد من حذف هذا العنصر؟')">حذف</button>
-                                                </form>
+                                            <td>
+                                                <div class="d-flex justify-content-start">
+                                                    <a href="{{ route('admin.sliders.show', $slider->id) }}"
+                                                        class=" btn btn-sm btn-success">عرض</a>
+                                                    <a href="{{ route('admin.sliders.edit', $slider->id) }}"
+                                                        class=" me-2 btn btn-sm btn-primary">تعديل</a>
+                                                    <form class=" me-2 form-inline" method="post"
+                                                        action="{{ route('admin.sliders.destroy', $slider->id) }}">
+                                                        @csrf
+                                                        @method ('delete')
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger show_confirm">حذف</button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

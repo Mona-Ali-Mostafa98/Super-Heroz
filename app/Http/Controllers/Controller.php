@@ -20,6 +20,11 @@ class Controller extends BaseController
                 Alert::success(session('success'));
                 // toast(session('success'),'success');
             }
+
+            if (Session::has('error')){
+                Alert::error(session('error'));
+            }
+
             return $next($request);
         });
     }

@@ -53,7 +53,7 @@
                             <img src="{{ asset('storage/' . $settings->logo) }}" alt="">
                         </a>
                         <h3>تسجيل الدخول</h3>
-                        @include('website.alerts')
+                        {{-- @include('website.alerts') --}}
                     </div>
                     <div class="auth-form col-xs-12">
                         <form action="{{ route('website.dologin') }}" method="POST">
@@ -165,6 +165,9 @@
     <script src="{{ asset('website/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('website/js/aos.js') }}"></script>
     <script src="{{ asset('website/js/script.js') }}"></script>
+
+    @include('sweetalert::alert')
+
 </body>
 
 </html>

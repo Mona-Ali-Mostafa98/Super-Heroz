@@ -132,6 +132,8 @@
     <script src="{{ asset('website/js/aos.js') }}"></script>
     <script src="{{ asset('website/js/script.js') }}"></script>
 
+    @include('sweetalert::alert')
+
     <script>
         $('.add-n').click(function() {
             $('#p_spec').clone().appendTo('.append-persons');
