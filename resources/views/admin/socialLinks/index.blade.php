@@ -34,7 +34,8 @@
                                             <td>{{ $link->id }}</td>
                                             <td>{{ $link->website_name }}</td>
                                             <td>{{ $link->status }}</td>
-                                            <td>{{ $link->created_at->toDateString() }}</td>
+                                            <td>{{ $link->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
+                                            </td>
                                             <td>
                                                 <div class="d-flex justify-content-start">
                                                     <a href="{{ route('admin.social_links.show', $link->id) }}"

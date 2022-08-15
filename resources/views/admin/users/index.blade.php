@@ -44,7 +44,7 @@
                                             <td class="text-primary fw-bold">{{ $user->name }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->created_at->translatedFormat('l , j F Y') }}
+                                            <td>{{ $user->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-start">

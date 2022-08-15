@@ -44,7 +44,7 @@
                                                     height="60" width="60"></td>
                                             <td class="text-primary fw-bold">{{ $about->title }}</td>
                                             <td>{{ $about->status }}</td>
-                                            <td>{{ $about->created_at->translatedFormat('l , j F Y') }}
+                                            <td>{{ $about->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-start">

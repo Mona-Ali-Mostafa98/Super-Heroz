@@ -89,13 +89,13 @@
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ الانشاء</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ $setting->created_at->translatedFormat('l , j F Y , H:i:s') }}</div>
+                                        {{ $setting->created_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}</div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ التعديل</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ $setting->updated_at->translatedFormat('l , j F Y , H:i:s') }}</div>
+                                        {{ $setting->updated_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}</div>
                                 </div>
 
                             </div>

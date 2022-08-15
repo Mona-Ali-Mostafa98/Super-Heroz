@@ -49,12 +49,14 @@
 
                                 <div class="row mb-2">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ الانشاء</div>
-                                    <div class="col-lg-9 col-md-8">{{ $slider->created_at }}</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        {{ $slider->created_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}</div>
                                 </div>
 
                                 <div class="row mb-2">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ التعديل</div>
-                                    <div class="col-lg-9 col-md-8">{{ $slider->updated_at }}</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        {{ $slider->updated_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}</div>
                                 </div>
 
                             </div>

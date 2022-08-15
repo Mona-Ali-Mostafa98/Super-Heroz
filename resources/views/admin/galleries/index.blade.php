@@ -39,7 +39,8 @@
                                             {{-- <td>{{ $gallery->id }}</td> --}}
                                             <td><img src="{{ asset('storage/' . $gallery->image) }}" alt=""
                                                     height="60" width="60"></td>
-                                            <td>{{ $gallery->created_at->toDateString() }}</td>
+                                            <td>{{ $gallery->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
+                                            </td>
 
                                             <td>
                                                 <div class="d-flex justify-content-start">

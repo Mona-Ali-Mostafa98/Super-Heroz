@@ -43,7 +43,8 @@
                                                     height="60" width="60"></td>
                                             <td class="text-primary fw-bold">{{ $slider->title }}</td>
                                             <td>{{ $slider->status }}</td>
-                                            <td>{{ $slider->created_at->toDateString() }}</td>
+                                            <td>{{ $slider->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
+                                            </td>
                                             <td class="d-flex justify-content-start">
                                                 <a href="{{ route('admin.sliders.show', $slider->id) }}"
                                                     class=" btn btn-sm btn-success">عرض</a>

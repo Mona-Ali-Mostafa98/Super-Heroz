@@ -36,8 +36,8 @@
                                         <td><img src="{{ asset('storage/' . $settings->logo) }}"
                                                 style="height: 100px; width: 150px;" alt=""></td>
                                         <td>{{ $settings->title }}</td>
-                                        <td>{{ $settings->created_at->translatedFormat('l , j F Y') }}</td>
-                                        <td>{{ $settings->updated_at->translatedFormat('l , j F Y') }}</td>
+                                        <td>{{ $settings->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}</td>
+                                        <td>{{ $settings->updated_at?->translatedFormat('l , j F Y') ?? 'N/A' }}</td>
                                         <td>
                                             <div class="d-flex justify-content-start">
                                                 <a href="{{ route('admin.settings.show', $settings->id) }}"
