@@ -3701,3 +3701,8 @@ html.off {
     margin-bottom: 10px;
     color: red !important;
     }
+
+
+.swal2-select {
+    display: none;
+}

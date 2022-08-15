@@ -19,6 +19,8 @@
 <!-- Template Main JS File -->
 <script src="{{ asset('admin/js/main.js') }}"></script>
 
+@include('sweetalert::alert')
+
 </body>
 
 </html>
