@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,15 +24,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('settings', SettingController::class)->only('index', 'show', 'update', 'edit');
-    Route::resource('social_links', SocialLinkController::class)->except('create','store');
-    // Route::resource('contact-us', ContactUsController::class)->only('index' , 'show' , 'destroy');
-    Route::resource('sliders', SliderController::class);
-    Route::resource('about', AboutUsController::class);
-    Route::resource('services', ServiceController::class);
-    Route::resource('galleries', GalleryController::class)->except('edit','update');
-    Route::resource('center_classes', CenterClassController::class);
-    Route::resource('categories', CategoryController::class);
-    Route::resource('users', UserController::class);
+    Route::get('/login', [AdminController::class, 'login'])->name('login');
+    Route::post('/dologin', [AdminController::class, 'dologin'])->name('dologin');
+
+    Route::middleware('isAdmin:admin')->group(function(){
+        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+
+        Route::resource('settings', SettingController::class)->only('index', 'show', 'update', 'edit');
+        Route::resource('social_links', SocialLinkController::class)->except('create','store');
+        // Route::resource('contact-us', ContactUsController::class)->only('index' , 'show' , 'destroy');
+        Route::resource('sliders', SliderController::class);
+        Route::resource('about', AboutUsController::class);
+        Route::resource('services', ServiceController::class);
+        Route::resource('galleries', GalleryController::class)->except('edit','update');
+        Route::resource('center_classes', CenterClassController::class);
+        Route::resource('categories', CategoryController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('admins', AdminController::class);
+
+});
 
 });

@@ -45,9 +45,9 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <a href="{{ route('website.index') }}" class="logo d-flex align-items-center w-auto">
                                     <img src="assets/img/logo.png" alt="">
-                                    <span class="d-none d-lg-block"> سوبرهيروز لاند</span>
+                                    <span class="d-none d-lg-block fs-1"> سوبرهيروز لاند</span>
                                 </a>
                             </div><!-- End Logo -->
 
@@ -56,28 +56,36 @@
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-3">تسجيل الدخول</h5>
-                                        <p class="text-center">قم بأدخال اسم الايميل وكلمة السر</p>
+                                        <h5 class="card-title text-center pb-0 fs-2">تسجيل الدخول</h5>
+                                        <p class="text-center fs-5 text-secondary">قم بأدخال البريد الالكترونى وكلمة
+                                            المرور
+                                        </p>
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidateaction
                                         action="{{ route('admin.dologin') }}" method="post">
                                         @csrf
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">الأيميل</label>
+                                            <label for="yourUsername" class="form-label fs-4">البريد الالكترونى
+                                                <span class="text-danger">*</span></label>
                                             <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                {{-- <span class="input-group-text" id="inputGroupPrepend">@</span> --}}
                                                 <input type="text" name="email" class="form-control"
                                                     id="yourUsername" required>
-                                                <div class="invalid-feedback">قم بادخال الايميل</div>
                                             </div>
+                                            @error('email')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
 
                                         <div class="col-12 mb-4">
-                                            <label for="yourPassword" class="form-label">كلمة السر</label>
+                                            <label for="yourPassword" class="form-label fs-4">كلمة المرور <span
+                                                    class="text-danger">*</span></label>
                                             <input type="password" name="password" class="form-control"
                                                 id="yourPassword" required>
-                                            <div class="invalid-feedback">قم بادخال كلمة السر!</div>
+                                            @error('password')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                         <div class="col-12 mb-4">
                                             <button class="btn btn-primary w-100" type="submit">تسجيل الدخول</button>
