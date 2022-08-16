@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\Kid;
 use App\Models\User;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -43,7 +44,16 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('admin.users.show', compact('user'));
+        $kids = Kid::where('user_id', $user->id)->get();
+
+        return view('admin.users.show', compact('user' , 'kids'));
+    }
+
+    public function info_about_kid(Kid $kid)
+    {
+        $user = $kid->user;
+
+        return view('admin.users.show_kid' , compact('kid' , 'user'));
     }
 
     public function edit(User $user)
@@ -80,6 +90,6 @@ class UserController extends Controller
         }
         return redirect()->route('admin.users.index')
             ->with('success' , "تم الحذف بنجاح");
-}
+    }
 
 }

@@ -23,7 +23,7 @@
 
                     <form action="{{ route('website.add_kid.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input name="user_id" type="text" value="{{ Auth::user()->id }}" hidden class="form-control">
+                        <input name="user_id" type="text" value="{{ Auth::user()->id }}" hidden>
                         <ul class="nav-tabs col-xs-12">
                             <li class="active">
                                 <a href="#" data-toggle="tab" data-target="#kid_infos">معلومات الطفل</a>
@@ -441,8 +441,7 @@
                                     </div>
                                     <div class="form-group col-xs-12">
                                         <button type="button" class="btn prev-step">السابق</button>
-                                        <button type="submit" class="btn" data-toggle="modal"
-                                            data-target="#addition_success">اضافة</button>
+                                        <button type="submit" class="btn">اضافة</button>
                                     </div>
                                 </div>
                             </div>

@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">البريدالالكترونى </div>
+                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">البريد الالكترونى </div>
                                     <div class="col-lg-9 col-md-8"> {{ $user->email }} </div>
                                 </div>
 
@@ -67,6 +67,43 @@
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ التعديل </div>
                                     <div class="col-lg-9 col-md-8">
                                         {{ $user->updated_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">الأطفال التابعين للمستخدم
+                                    </div>
+                                    <div class="col-lg-9 col-md-8">
+                                        <table class="table table-hover table-striped table-bordered border-dark"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    {{-- <th scope="col">ID</th> --}}
+                                                    <th scope="col">الأسم</th>
+                                                    <th scope="col">رقم الهاتف</th>
+                                                    <th scope="col">البريد الالكترونى</th>
+                                                    <th scope="col">تاريخ الانشاء</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($kids as $kid)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td class="text-primary fw-bold"><a
+                                                                href="{{ route('admin.info_about_kid', $kid->id) }}">{{ $kid->kid_name }}</a>
+                                                        </td>
+                                                        <td>{{ $kid->gender }}</td>
+                                                        <td>{{ $kid->birth_date }}</td>
+                                                        <td>{{ $kid->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        {{-- <div class="mt-4 mb-3 d-flex justify-content-end">
+                                            {{ $kids->links() }}
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

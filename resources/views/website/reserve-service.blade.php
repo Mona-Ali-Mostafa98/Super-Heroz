@@ -15,33 +15,51 @@
         <div class="s-wrap col-xs-12">
             <div class="container">
                 <div class="kid-space reserve col-xs-12">
-                    <form action="#" method="get">
+                    <form action="{{ route('website.reserve_service_store') }}" method="POST">
+                        @csrf
+                        <input name="user_id" type="text" value="{{ Auth::user()->id }}" hidden>
+
                         <div class="form-group col-md-4 col-sm-6 col-xs-12">
                             <h5>اختر الخدمة</h5>
                             <select name="service" class="form-control">
                                 <option selected disabled>يرجى الاختيار</option>
                                 @foreach ($services as $service)
-                                    <option>{{ $service->title }}</option>
+                                    <option value="{{ $service->title }}" @if (old('service')) selected @endif>
+                                        {{ $service->title }}</option>
                                 @endforeach
                             </select>
+                            @error('service')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group col-md-4 col-sm-6 col-xs-12">
                             <h5>ميعاد الاشتراك</h5>
-                            <input name="date" type="date" class="form-control" placeholder="0000/00/00">
+                            <input name="date" type="date" class="form-control" placeholder="0000/00/00"
+                                value="{{ old('date') }}">
+                            @error('date')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             {{-- <i class="la la-calendar"></i> --}}
                         </div>
                         <div class="form-group col-md-4 col-sm-6 col-xs-12">
                             <h5>اختر الطفل</h5>
                             <select name="child" class="form-control">
                                 <option selected disabled>يرجى الاختيار</option>
-                                <option>اختيار1</option>
-                                <option>اختيار1</option>
+                                @foreach ($kids as $kid)
+                                    <option value="{{ $kid->kid_name }}" @if (old('child')) selected @endif>
+                                        {{ $kid->kid_name }}</option>
+                                @endforeach
                                 {{-- <option><a href="{{ route('website.add_kid_view') }}">اضافة طفل اخر</a></option> --}}
                             </select>
+                            @error('child')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group col-xs-12">
-                            <button type="button" class="btn" data-toggle="modal" data-target="#reserve_success">حجز
+                            <button type="submit" class="btn">حجز
                                 خدمة</button>
+                            {{-- <button type="submit" class="btn" data-toggle="modal" data-target="#reserve_success">حجز
+                                خدمة</button> --}}
                         </div>
                     </form>
                 </div>

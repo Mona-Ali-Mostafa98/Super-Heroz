@@ -35,8 +35,8 @@ Route::prefix('website')->name('website.')->group(function () {
     Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
     Route::get('/policy', [PolicyController::class, 'index'])->name('policy');
 
-    Route::get('/reserve_service', [ServiceController::class, 'reserve_service'])->name('reserve_service');
-    Route::post('/reserve_service', [ServiceController::class, 'reserve_service_store'])->name('reserve_service_store');
+    Route::get('/reserve_service', [ServiceController::class, 'reserve_service'])->name('reserve_service')->middleware('auth');
+    Route::post('/reserve_service/store', [ServiceController::class, 'reserve_service_store'])->name('reserve_service_store')->middleware('auth');
 
     Route::get('/register/create', [UserController::class, 'create'])->name('register.create');
     Route::post('/register', [UserController::class, 'store'])->name('register');
@@ -55,9 +55,9 @@ Route::prefix('website')->name('website.')->group(function () {
     Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-    Route::get('/add_kid_view', [UserController::class, 'add_kid_view'])->name('add_kid_view');
-    Route::post('/add_kid/store', [UserController::class, 'add_kid'])->name('add_kid.store');
-    Route::get('/user/kids', [UserController::class, 'kids'])->name('user.kids');
+    Route::get('/add_kid_view', [UserController::class, 'add_kid_view'])->name('add_kid_view')->middleware('auth');
+    Route::post('/add_kid/store', [UserController::class, 'add_kid'])->name('add_kid.store')->middleware('auth');
+    Route::get('/user/kids', [UserController::class, 'kids'])->name('user.kids')->middleware('auth');
 
 
 

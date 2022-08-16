@@ -43,6 +43,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('admins', AdminController::class);
 
+        Route::get('/info_about_kid/{kid}', [UserController::class, 'info_about_kid'])->name('info_about_kid');
+
 });
 
 });
