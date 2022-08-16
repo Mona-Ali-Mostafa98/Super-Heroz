@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ContactUsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('settings', SettingController::class)->only('index', 'show', 'update', 'edit');
         Route::resource('social_links', SocialLinkController::class)->except('create','store');
-        // Route::resource('contact-us', ContactUsController::class)->only('index' , 'show' , 'destroy');
+        Route::resource('contact', ContactUsController::class)->only('index' , 'show' , 'destroy');
         Route::resource('sliders', SliderController::class);
         Route::resource('about', AboutUsController::class);
         Route::resource('services', ServiceController::class);

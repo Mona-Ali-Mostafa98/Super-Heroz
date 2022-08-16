@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function dologin(Request $request)
     {
         $data = $request -> validate([
-            'email'=> 'required|email',
+            'email'=> 'required|email|exists:admins,email',
             'password'=> 'required | string',
         ],[
             'email.required' => ' مطلوب ادخال البريد الالكترونى',
@@ -30,14 +30,14 @@ class AdminController extends Controller
             'email.exists' => 'هناك خطأ فى البريد الالكترونى',
             'password.required' => 'مطلوب ادخال كلمة المرور',
         ]);
-        // dd(auth()->guard('admin')-> attempt(['email'=> $data['email'],'password'=> $data['password']]));
+        // dd(!auth()->guard('admin')-> attempt(['email'=> $data['email'],'password'=> $data['password']]));
         if(!auth()->guard('admin')-> attempt(['email'=> $data['email'],'password'=> $data['password']]))
         {
             return back();
         }
         else
         {
-            return redirect(route('admin.settings.index'))->with('success' , 'تم تسجيل الدخول بنجاح');
+            return redirect()->route('admin.settings.index')->with('success' , 'تم تسجيل الدخول بنجاح');
 
         }
     }
@@ -86,7 +86,7 @@ class AdminController extends Controller
     public function update(UpdateAdminRequest $request , Admin $admin)
     {
 
-         $old_image = $admin->image;
+        $old_image = $admin->image;
         $data = $request->except('image');
 
         $data['image'] = $this->uploadImage($request, 'image', 'admins');

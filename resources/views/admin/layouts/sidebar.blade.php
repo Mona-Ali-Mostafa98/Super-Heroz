@@ -91,7 +91,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="{{ Request::is('') ? 'nav-link fs-6' : 'nav-link collapsed fs-6' }} " href="#">
+                <a class="{{ Request::is('') ? 'nav-link fs-6' : 'nav-link collapsed fs-6' }} "
+                    href="{{ route('admin.contact.index') }}">
                     <i class="bi bi-info-circle"></i>
                     <span class="p-2"> تواصل معنا</span>
                 </a>
