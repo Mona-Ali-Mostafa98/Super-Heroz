@@ -122,7 +122,7 @@
                                         <a href="{{ route('website.classes') }}">فصول المركز</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('website.policy') }}">السياسات والانظمه</a>
+                                        <a href="{{ route('website.policies') }}">السياسات والانظمه</a>
                                     </li>
                                 </ul>
                             </li>

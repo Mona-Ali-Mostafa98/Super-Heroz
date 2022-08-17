@@ -16,6 +16,8 @@
 <script src="{{ asset('admin/vendor/simple-datatables/simple-datatables.js') }}"></script>
 <script src="{{ asset('admin/vendor/tinymce/tinymce.min.js') }}"></script>
 
+@stack('scripts')
+
 <!-- Template Main JS File -->
 <script src="{{ asset('admin/js/main.js') }}"></script>
 

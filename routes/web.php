@@ -59,6 +59,7 @@ Route::prefix('website')->name('website.')->group(function () {
     Route::post('/add_kid/store', [UserController::class, 'add_kid'])->name('add_kid.store')->middleware('auth');
     Route::get('/user/kids', [UserController::class, 'kids'])->name('user.kids')->middleware('auth');
 
+    Route::get('/website/policies', [PolicyController::class, 'index'])->name('policies');
 
 
 });

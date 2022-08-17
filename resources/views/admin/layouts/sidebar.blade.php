@@ -35,7 +35,8 @@
 
 
             <l class="nav-item">
-                <a class="{{ Request::is('') ? 'nav-link fs-6' : 'nav-link collapsed fs-6' }} " href="#">
+                <a class="{{ Request::is('admin/policies*') ? 'nav-link fs-6' : 'nav-link collapsed fs-6' }} "
+                    href="{{ route('admin.policies.index') }}">
                     <i class="bi bi-list-stars"></i>
                     <span class="p-2">الخصوصيه </span>
                 </a>

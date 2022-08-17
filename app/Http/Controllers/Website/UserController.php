@@ -194,6 +194,13 @@ class UserController extends Controller
 
         DB::beginTransaction();
         try {
+            // $request->validate([
+            //     'addmore' => ['array','required'],
+            //     'addmore.*.person_name' => ['required','string', 'min:10' ,'max:255'],
+            //     'addmore.*.person_phone' => ['required' , 'string' ,'min:11' , 'max:11'],
+            //     'addmore.*.relation_to_kid' =>  ['required' , 'string' , 'max:255'],
+            // ]);
+
             $data = $request->except('addmore' , '_token');
             // dd($data);
             $data['medical_report_image'] = $this->uploadImage($request, 'medical_report_image', 'kid_images');
@@ -230,7 +237,7 @@ class UserController extends Controller
     public function kids(){
         $user = User::where('id',Auth::user()->id)->first();      // dd($user->id);
 
-        $kids = Kid::where('id',Auth::user()->id)->with('persons_take_kid')->get();
+        $kids = Kid::where('user_id',Auth::user()->id)->with('persons_take_kid')->get();
         //dd($kids);
 
         return  view('website.my-kids', compact('kids' ,'user'));

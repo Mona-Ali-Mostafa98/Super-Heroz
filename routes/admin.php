@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\PolicyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('users', UserController::class);
         Route::resource('admins', AdminController::class);
+
+        Route::resource('policies', PolicyController::class);
 
         Route::get('/info_about_kid/{kid}', [UserController::class, 'info_about_kid'])->name('info_about_kid');
 
