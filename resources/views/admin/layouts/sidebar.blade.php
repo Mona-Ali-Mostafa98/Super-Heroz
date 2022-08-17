@@ -42,12 +42,19 @@
                 </a>
             </l>
 
-
             <li class="nav-item">
                 <a class="{{ Request::is('admin/services*') ? 'nav-link fs-6' : 'nav-link collapsed fs-6' }} "
                     href="{{ route('admin.services.index') }}">
                     <i class="bi bi-info-circle"></i>
                     <span class="p-2">الخدمات</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="{{ Request::is('admin/booking_services') ? 'nav-link fs-6' : 'nav-link collapsed fs-6' }} "
+                    href="{{ route('admin.booking_services.index') }}">
+                    <i class="bi bi-info-circle"></i>
+                    <span class="p-2">الخدمات المحجوزه</span>
                 </a>
             </li>
 

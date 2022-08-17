@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\PolicyController;
+use App\Http\Controllers\Admin\ServiceBookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('policies', PolicyController::class);
 
         Route::get('/info_about_kid/{kid}', [UserController::class, 'info_about_kid'])->name('info_about_kid');
+
+        Route::get('/booking_services', [ServiceBookingController::class, 'index'])->name('booking_services.index');
+        Route::delete('/booking_services/{booking_service}', [ServiceBookingController::class, 'destroy'])->name('booking_services.destroy');
 
 });
 

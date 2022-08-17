@@ -44,7 +44,7 @@
                                     <a href="{{ route('website.user.kids') }}">اطفالى</a>
                                 </li>
                                 <li>
-                                    <a href="#">الاشعارات</a>
+                                    {{-- <a href="#">الاشعارات</a> --}}
                                 </li>
                             </ul>
                         </div>
