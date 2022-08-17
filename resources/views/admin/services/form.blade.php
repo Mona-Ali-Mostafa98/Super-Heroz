@@ -31,7 +31,7 @@
 <div class="row mb-4">
     <label for="advantage" class="col-sm-2 col-form-label">الميزه</label>
     <div class="col-sm-10">
-        <textarea name="advantage" id="advantage" rows="3" placeholder="ادخل الوصف"
+        <textarea name="advantage" id="advantage" rows="3" placeholder="ادخل ميزة الخدمه"
             class="col-sm-12 form-control @error('advantage') is-invalid @enderror">{{ old('advantage', $service->advantage) }}</textarea>
         @error('advantage')
             <p class="invalid-feedback">{{ $message }}</p>

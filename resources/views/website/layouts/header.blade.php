@@ -69,18 +69,9 @@
                     <div class="social">
                         @foreach ($social_links as $social_link)
                             <a href="{{ $social_link->website_url }}" class="{{ $social_link->website_name }}">
-                                <i class="la la-{{ $social_link->website_name }}"></i>
+                                <i class="{{ $social_link->website_icon }}"></i>
                             </a>
                         @endforeach
-                        {{-- <a href="#" class="{facebook}">
-                            <i class="la la-facebook"></i>
-                        </a>
-                        <a href="#" class="twitter">
-                            <i class="la la-twitter"></i>
-                        </a>
-                        <a href="#" class="instagram">
-                            <i class="la la-instagram"></i>
-                        </a> --}}
                     </div>
                 </div>
             </div>

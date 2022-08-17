@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', "Update $link->website_name link")
+@section('page_title', "Update $social_link->website_name link")
 @section('content')
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title fs-4 mb-3">تعديل على رابط</h5>
-                            <form method="POST" action="{{ route('admin.social_links.update', $link->id) }}">
+                            <form method="POST" action="{{ route('admin.social_links.update', $social_link->id) }}">
                                 @csrf
                                 @method('PUT')
                                 <div class="row mb-4">
@@ -26,7 +26,7 @@
                                     <div class="col-sm-10">
                                         <input name="website_name" type="text" id="website_name"
                                             placeholder="أدخل اسم الموقع "
-                                            value="{{ old('website_name', $link->website_name) }}"
+                                            value="{{ old('website_name', $social_link->website_name) }}"
                                             class="form-control @error('website_name') is-invalid @enderror">
                                         @error('website_name')
                                             <p class="invalid-feedback">{{ $message }}</p>
@@ -39,7 +39,7 @@
                                     <div class="col-sm-10">
                                         <input name="website_icon" type="text" id="website_icon"
                                             placeholder="ادخل ايقونة الموقع "
-                                            value="{{ old('website_icon', $link->website_icon) }}"
+                                            value="{{ old('website_icon', $social_link->website_icon) }}"
                                             class="form-control @error('website_icon') is-invalid @enderror">
                                         @error('website_icon')
                                             <p class="invalid-feedback">{{ $message }}</p>
@@ -52,7 +52,7 @@
                                     <div class="col-sm-10">
                                         <input name="website_url" type="text" id="website_url"
                                             placeholder="ادخل رابط الموقع"
-                                            value="{{ old('website_url', $link->website_url) }}"
+                                            value="{{ old('website_url', $social_link->website_url) }}"
                                             class="form-control @error('website_url') is-invalid @enderror">
                                         @error('website_url')
                                             <p class="invalid-feedback">{{ $message }}</p>
@@ -65,9 +65,9 @@
                                     <div class="col-sm-10">
                                         <select name="status" id="status"
                                             class="form-select @error('status') is-invalid @enderror">
-                                            <option value="عرض" @if ($link->status == 'عرض' or old('status') == 'عرض') selected @endif>عرض
+                                            <option value="عرض" @if ($social_link->status == 'عرض' or old('status') == 'عرض') selected @endif>عرض
                                             </option>
-                                            <option value="أخفاء" @if ($link->status == 'أخفاء' or old('status') == 'أخفاء') selected @endif>أخفاء
+                                            <option value="أخفاء" @if ($social_link->status == 'أخفاء' or old('status') == 'أخفاء') selected @endif>أخفاء
                                             </option>
                                         </select>
                                         @error('status')

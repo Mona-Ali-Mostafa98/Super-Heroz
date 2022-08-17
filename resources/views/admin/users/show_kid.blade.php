@@ -85,21 +85,27 @@
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">بيانات الشخص الاول في الحالات
                                         الطارئة </div>
-                                    <div class="col-lg-9 col-md-8"> {{ $kid->emergency_first_name }} </div>
-                                    <div class="col-lg-9 col-md-8"> {{ $kid->emergency_first_phone }} </div>
-                                    <div class="col-lg-9 col-md-8"> {{ $kid->emergency_first_relation }} </div>
+                                    <div class="col-lg-9 col-md-8">
+                                        <div> {{ $kid->emergency_first_name }} </div>
+                                        <div> {{ $kid->emergency_first_phone }} </div>
+                                        <div> {{ $kid->emergency_first_relation }} </div>
+                                    </div>
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">بيانات الشخص الثانى في الحالات
+                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">بيانات الشخص الثانى في
+                                        الحالات
                                         الطارئة </div>
-                                    <div class="col-lg-9 col-md-8"> {{ $kid->emergency_second_name }} </div>
-                                    <div class="col-lg-9 col-md-8"> {{ $kid->emergency_second_phone }} </div>
-                                    <div class="col-lg-9 col-md-8"> {{ $kid->emergency_second_relation }} </div>
+                                    <div class="col-lg-9 col-md-8">
+                                        <div>{{ $kid->emergency_second_name }} </div>
+                                        <div>{{ $kid->emergency_second_phone }}</div>
+                                        <div> {{ $kid->emergency_second_relation }} </div>
+                                    </div>
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">هل يعاني الطالب من الحساسية
+                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">هل يعاني الطالب من
+                                        الحساسية
                                         الغذائية </div>
                                     <div class="col-lg-9 col-md-8"> {{ $kid->kid_suffer_food_allergies }} </div>
                                 </div>
@@ -111,7 +117,8 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">هل يعاني الطالب من أي نوع آخر
+                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">هل يعاني الطالب من أي نوع
+                                        آخر
                                         من الحساسية </div>
                                     <div class="col-lg-9 col-md-8"> {{ $kid->kid_suffer_other_type_of_allergy }} </div>
                                 </div>
@@ -136,7 +143,8 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">هل الطالب من ذوي الاحتياجات
+                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">هل الطالب من ذوي
+                                        الاحتياجات
                                         الخاصة </div>
                                     <div class="col-lg-9 col-md-8"> {{ $kid->kid_with_special_needs }} </div>
                                 </div>

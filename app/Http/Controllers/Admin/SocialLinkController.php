@@ -10,29 +10,22 @@ class SocialLinkController extends Controller
 {
     public function index()
     {
-        return view('admin.socialLinks.index', [
-            'links' => SocialLink:: all()
-        ]);
+        $links = SocialLink:: all() ;
+        return view('admin.socialLinks.index' , compact('links'));
     }
 
-    public function show($id)
+    public function show(SocialLink $social_link)
     {
-        return view('admin.socialLinks.show',[
-            'link'=> SocialLink::findOrFail($id)
-        ]);
+        return view('admin.socialLinks.show', compact('social_link'));
     }
 
-    public function edit($id)
+    public function edit(SocialLink $social_link)
     {
-        return view('admin.socialLinks.edit',[
-            'link'=> SocialLink::findOrFail($id)
-        ]);
+        return view('admin.socialLinks.edit', compact('social_link'));
     }
 
-    public function update ( Request $request, $id)
+    public function update ( Request $request, SocialLink $social_link)
     {
-        $link=SocialLink::findOrFail($id);
-
         $request->validate([
             'website_name' => 'required|string|max:255',
             'website_icon' => 'nullable|string',
@@ -40,18 +33,17 @@ class SocialLinkController extends Controller
             'status' =>'required'
         ]);
 
-        $data = $request->all();
-        $link->update($data);
+        $data = $request->except('_token');
+        $social_link->update($data);
 
         return redirect()->route('admin.social_links.index')
             ->with('success',"تم التعديل على روابط التواصل الاجتماعى");
 
     }
 
-    public function destroy($id)
+    public function destroy(SocialLink $social_link)
     {
-        $link = SocialLink::findOrFail($id);
-        $link -> delete();
+        $social_link -> delete();
         return redirect()->route('admin.social_links.index')
             ->with('success' , "تم حذف رابط من روابط التواصل الاجتماعى");
     }

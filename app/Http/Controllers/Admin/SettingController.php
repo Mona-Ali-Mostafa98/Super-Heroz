@@ -15,31 +15,25 @@ class SettingController extends Controller
 
     public function index()
     {
-        return view('admin.settings.index', [
-            'settings' => Setting:: first()->get()
-        ]);
+        $settings = Setting:: first()->get() ;
+        return view('admin.settings.index', compact('settings'));
     }
 
-    public function show($id)
+    public function show(Setting $setting)
     {
-        return view('admin.settings.show',[
-            'setting'=> Setting::findOrFail($id),
-        ]);
+        return view('admin.settings.show', compact('setting'));
     }
 
-    public function edit($id)
+    public function edit(Setting $setting)
     {
-        return view('admin.settings.edit', [
-            'setting' => Setting::findOrFail($id),
-        ]);
+        return view('admin.settings.edit', compact('setting'));
     }
 
-    public function update ( SettingRequest $request , $id)
+    public function update ( SettingRequest $request , Setting $setting)
     {
-        $setting = Setting::findOrFail($id);
         $old_image = $setting->image;
         $old_logo = $setting->logo;
-        $data = $request->except('image','logo');
+        $data = $request->except('image','logo' , '_token');
 
         $data['logo'] = $this->uploadImage($request, 'logo', 'settings');
         $data['image'] = $this->uploadImage($request, 'image', 'settings');

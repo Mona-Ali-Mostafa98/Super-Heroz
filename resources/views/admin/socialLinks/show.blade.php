@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', "Show $link->website_name Website")
+@section('page_title', "Show $social_link->website_name Website")
 @section('content')
     <main id="main" class="main">
         <div class="row pagetitle mb-2">
@@ -16,47 +16,50 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4 mb-3">عرض كل التفاصيل عن رابط "{{ $link->website_name }}" للموقع</h5>
+                            <h5 class="card-title fs-4 mb-3">عرض كل التفاصيل عن رابط "{{ $social_link->website_name }}"
+                                للموقع</h5>
                             <div class="container-fluid">
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">#</div>
-                                    <div class="col-lg-9 col-md-8">{{ $link->id }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $social_link->id }}</div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">أسم الموقع</div>
-                                    <div class="col-lg-9 col-md-8">{{ $link->website_name }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $social_link->website_name }}</div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">أيقونة الموقع</div>
-                                    <div class="col-lg-9 col-md-8">{{ $link->website_icon }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $social_link->website_icon }}</div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">رابط الموقع</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ $link->website_url }}
+                                        {{ $social_link->website_url }}
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">حالة الموقع</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ $link->status }}
+                                        {{ $social_link->status }}
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ الانشاء</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ $link->created_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}</div>
+                                        {{ $social_link->created_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}
+                                    </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-primary fw-bold">تاريخ التعديل</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ $link->updated_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}</div>
+                                        {{ $social_link->updated_at?->translatedFormat('l , j F Y , H:i:s') ?? 'N/A' }}
+                                    </div>
                                 </div>
 
                             </div>

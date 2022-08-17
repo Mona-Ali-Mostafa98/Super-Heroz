@@ -27,7 +27,7 @@ class AboutUsController extends Controller
 
     public function store(AboutUsRequest $request)
     {
-        $data = $request->except('image');
+        $data = $request->except('image', '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'about');
 
@@ -51,7 +51,7 @@ class AboutUsController extends Controller
     public function update(AboutUsRequest $request , AboutUs $about)
     {
         $old_image = $about->image;
-        $data = $request->except('image');
+        $data = $request->except('image', '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'about');
 

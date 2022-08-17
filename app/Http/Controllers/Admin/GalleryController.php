@@ -31,7 +31,7 @@ class GalleryController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'galleries');
 

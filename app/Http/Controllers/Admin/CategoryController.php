@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'categories');
 
@@ -51,7 +51,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request , Category $category)
     {
         $old_image = $category->image;
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'categories');
 

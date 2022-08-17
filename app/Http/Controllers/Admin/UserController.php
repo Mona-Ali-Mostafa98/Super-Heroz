@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'users');
 
@@ -64,7 +64,7 @@ class UserController extends Controller
     public function update(Request $request,User $user)
     {
         $old_image = $user->image;
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'users');
 

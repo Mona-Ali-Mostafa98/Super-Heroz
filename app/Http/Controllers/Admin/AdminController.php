@@ -64,7 +64,7 @@ class AdminController extends Controller
 
     public function store(StoreAdminRequest $request)
     {
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
         $data['image'] = $this->uploadImage($request, 'image', 'admins');
 
         Admin::create($data);
@@ -87,7 +87,7 @@ class AdminController extends Controller
     {
 
         $old_image = $admin->image;
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'admins');
 

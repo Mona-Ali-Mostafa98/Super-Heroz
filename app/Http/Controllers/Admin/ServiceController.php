@@ -27,7 +27,7 @@ class ServiceController extends Controller
 
     public function store(ServiceRequest $request)
     {
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'services');
 
@@ -55,7 +55,7 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request , Service $service )
     {
         $old_image = $service->image;
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'services');
 

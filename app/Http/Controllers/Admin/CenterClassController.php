@@ -27,7 +27,7 @@ class CenterClassController extends Controller
 
     public function store(CenterClassRequest $request)
     {
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'center_classes');
 
@@ -51,7 +51,7 @@ class CenterClassController extends Controller
     public function update(CenterClassRequest $request , CenterClass $center_class)
     {
         $old_image = $center_class->image;
-        $data = $request->except('image');
+        $data = $request->except('image' , '_token');
 
         $data['image'] = $this->uploadImage($request, 'image', 'center_classes');
 
