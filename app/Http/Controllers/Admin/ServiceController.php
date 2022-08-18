@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ServiceRequest;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 use App\Models\Service;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class ServiceController extends Controller
         return view('admin.services.create' , compact('service') );
     }
 
-    public function store(ServiceRequest $request)
+    public function store(StoreServiceRequest $request)
     {
         $data = $request->except('image' , '_token');
 
@@ -52,7 +53,7 @@ class ServiceController extends Controller
         return view('admin.services.edit', compact('service') );
     }
 
-    public function update(ServiceRequest $request , Service $service )
+    public function update(UpdateServiceRequest $request , Service $service )
     {
         $old_image = $service->image;
         $data = $request->except('image' , '_token');

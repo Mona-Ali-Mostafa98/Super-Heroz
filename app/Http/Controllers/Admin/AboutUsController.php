@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AboutUsRequest;
+use App\Http\Requests\StoreAboutUsRequest;
+use App\Http\Requests\UpdateAboutUsRequest;
 use App\Models\AboutUs;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class AboutUsController extends Controller
         return view('admin.about.create' , compact('about'));
     }
 
-    public function store(AboutUsRequest $request)
+    public function store(StoreAboutUsRequest $request)
     {
         $data = $request->except('image', '_token');
 
@@ -48,7 +49,7 @@ class AboutUsController extends Controller
         return view('admin.about.edit', compact('about'));
     }
 
-    public function update(AboutUsRequest $request , AboutUs $about)
+    public function update(UpdateAboutUsRequest $request , AboutUs $about)
     {
         $old_image = $about->image;
         $data = $request->except('image', '_token');

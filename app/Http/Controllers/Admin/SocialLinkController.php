@@ -29,7 +29,7 @@ class SocialLinkController extends Controller
         $request->validate([
             'website_name' => 'required|string|max:255',
             'website_icon' => 'nullable|string',
-            'website_url' => 'required|string',
+            'website_url' => 'required|url',
             'status' =>'required'
         ]);
 

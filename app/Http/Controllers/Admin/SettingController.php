@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SettingRequest;
+use App\Http\Requests\UpdateSettingRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use  App\Traits\UploadImageTrait ;
@@ -29,7 +29,7 @@ class SettingController extends Controller
         return view('admin.settings.edit', compact('setting'));
     }
 
-    public function update ( SettingRequest $request , Setting $setting)
+    public function update (UpdateSettingRequest $request , Setting $setting)
     {
         $old_image = $setting->image;
         $old_logo = $setting->logo;

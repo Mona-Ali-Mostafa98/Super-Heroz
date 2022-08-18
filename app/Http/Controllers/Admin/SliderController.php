@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SliderRequest;
+use App\Http\Requests\StoreSliderRequest;
+use App\Http\Requests\UpdateSliderRequest;
 use App\Models\Slider;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class SliderController extends Controller
         return view('admin.sliders.create' , compact('slider'));
     }
 
-    public function store(SliderRequest $request)
+    public function store(StoreSliderRequest $request)
     {
         $data = $request->except('image' , '_token');
         $data['image'] = $this->uploadImage($request, 'image', 'sliders');
@@ -46,7 +47,7 @@ class SliderController extends Controller
         return view('admin.sliders.edit', compact('slider'));
     }
 
-    public function update(SliderRequest $request,Slider $slider)
+    public function update(UpdateSliderRequest $request,Slider $slider)
     {
         $old_image = $slider->image;
         $data = $request->except('image' , '_token');
@@ -65,7 +66,7 @@ class SliderController extends Controller
 
         return redirect()->route('admin.sliders.index')
             ->with('success',"تم التعديل بنجاح");
-     }
+    }
 
     public function destroy(Slider $slider)
     {

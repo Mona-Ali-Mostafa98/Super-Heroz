@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class CategoryController extends Controller
         return view('admin.categories.create' , compact('category'));
     }
 
-    public function store(CategoryRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         $data = $request->except('image' , '_token');
 
@@ -48,7 +49,7 @@ class CategoryController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(CategoryRequest $request , Category $category)
+    public function update(UpdateCategoryRequest $request , Category $category)
     {
         $old_image = $category->image;
         $data = $request->except('image' , '_token');

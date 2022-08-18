@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CenterClassRequest;
+use App\Http\Requests\StoreCenterClassRequest;
+use App\Http\Requests\UpdateCenterClassRequest;
 use App\Models\CenterClass;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -25,7 +27,7 @@ class CenterClassController extends Controller
         return view('admin.center_classes.create' , compact('center_class'));
     }
 
-    public function store(CenterClassRequest $request)
+    public function store(StoreCenterClassRequest $request)
     {
         $data = $request->except('image' , '_token');
 
@@ -48,7 +50,7 @@ class CenterClassController extends Controller
         return view('admin.center_classes.edit', compact('center_class'));
     }
 
-    public function update(CenterClassRequest $request , CenterClass $center_class)
+    public function update(UpdateCenterClassRequest $request , CenterClass $center_class)
     {
         $old_image = $center_class->image;
         $data = $request->except('image' , '_token');
