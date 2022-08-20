@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Models\Admin;
+use App\Models\ContactUs;
+use App\Models\Kid;
+use App\Models\User;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     use UploadImageTrait;
+
+    public function dashboard(){
+        $users_count = User:: count();
+        $admins_count = Admin:: count();
+        $kids_count = Kid:: count();
+        $contacts_count = ContactUs:: count();
+        $admins = Admin::latest()->take(6)->get();
+
+        return view('admin.dashboard' , compact('users_count' , 'admins_count' , 'kids_count' , 'contacts_count' , 'admins'));
+    }
 
     public function login()
     {
