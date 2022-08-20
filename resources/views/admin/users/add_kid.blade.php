@@ -1,52 +1,179 @@
-@extends('website.layout')
+@extends('admin.layout')
+@section('page_title', 'Create new kid')
 @section('content')
-    <main class="main-content col-xs-12">
-        <div class="breads col-xs-12" style="background-image: url({{ asset('website/images/slide.jpg') }});">
-            <div class="container">
-                <h3>إضافة طفلك</h3>
-                <ul>
-                    <li>
-                        <a href="{{ route('website.index') }}">الرئيسية</a>
-                    </li>
-                    <li>اضافة طفل</li>
-                </ul>
-            </div>
-        </div>
-        <div class="s-wrap col-xs-12">
-            <div class="container">
-                <div class="kid-space col-xs-12">
-                    {{-- @if (session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif --}}
+    @push('styles')
+        <style>
+            .form-group .f-labels {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
 
-                    <form action="{{ route('website.add_kid.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input name="user_id" type="text" value="{{ Auth::user()->id }}" hidden>
-                        <ul class="nav-tabs col-xs-12">
-                            <li class="active">
-                                <a href="#" data-toggle="tab" data-target="#kid_infos">معلومات الطفل</a>
-                            </li>
-                            <li class="disabled">
-                                <a href="#" data-toggle="tab" data-target="#kid_enrollment">الحضور والانصراف</a>
-                            </li>
-                            <li class="disabled">
-                                <a href="#" data-toggle="tab" data-target="#kid_medics">معلومات طبيه</a>
-                            </li>
-                            <li class="disabled">
-                                <a href="#" data-toggle="tab" data-target="#kid_docs">المستندات المطلوبة</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content col-xs-12">
-                            <div class="tab-pane fade active in" id="kid_infos">
-                                <div class="c-card col-xs-12">
+            .form-group .f-labels label {
+                font-weight: normal;
+                width: 48%;
+                text-align: center;
+            }
+
+            .form-group .f-labels label span {
+                height: 40px;
+                border: 1px solid #EBEBEB;
+                border-radius: 5px;
+                display: block;
+                line-height: 40px;
+                font-family: 'f-bd';
+                color: black;
+                transition: all .3s;
+                cursor: pointer;
+            }
+
+            .form-group .f-labels label input {
+                display: none;
+            }
+
+            .form-group .f-labels label input:checked+span {
+                color: #fff;
+                border-color: #adb5bd;
+                background-color: #adb5bd
+            }
+
+            .form-group .f-upload {
+                position: relative;
+                border-radius: 5px;
+                height: 40px;
+                /* margin-top: 72px; */
+            }
+
+            .form-group .f-upload input {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 2;
+                cursor: pointer;
+            }
+
+            .form-group .f-upload .form-control {
+                opacity: 1;
+                z-index: 0;
+                background: transparent;
+            }
+
+            .form-group .f-upload i {
+                position: absolute;
+                left: 12px;
+                top: 12px;
+                color: #B9B9B8;
+                font-size: 21px;
+            }
+
+            .form-group .f-upload span {
+                height: 100%;
+                line-height: 40px;
+                display: block;
+                padding: 0 15px;
+                color: #BEBEBE;
+            }
+
+
+            .form-group .prof-img {
+                text-align: center;
+                width: 100%;
+            }
+
+            .form-group .prof-img label {
+                margin-bottom: 20px;
+                display: block;
+                position: relative;
+                background-color: #F5F5F5;
+                border-radius: 10px;
+                height: 250px;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            .form-group .prof-img p {
+                color: #6A6A6A;
+                font-family: 'f-rg';
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .form-group .prof-img label i {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: #273370;
+                font-size: 30px;
+            }
+
+            .form-group .prof-img label input {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+            }
+
+            .form-group .prof-img label i:after {
+                content: '+';
+                position: absolute;
+                left: -10px;
+                top: -10px;
+                font-size: 22px;
+                font-family: 'f-rg';
+            }
+
+            .form-group .prof-img label img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                outline: none !important;
+                font-size: 0;
+                z-index: 1;
+                position: relative;
+            }
+        </style>
+    @endpush
+    <main id="main" class="main">
+        <div class="row pagetitle mb-2">
+            <div class="col-sm-6 d-flex justify-content-start">
+                <h1 class="mb-2 fs-2">المستخدمين / الأطفال</h1>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-end">
+                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-primary mb-2 "><i
+                        class="bi bi-caret-left-fill ms-1"></i> رجوع</a>
+                </h1>
+            </div>
+        </div><!-- End Page Title -->
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title fs-4 mb-3"> أضافة طفل للمستخدم "{{ $user->name }}" </h5>
+                            <form action="{{ route('admin.add_kid') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12  mb-4 mt-4">
+                                    <h3 class="text-primary">معلومات الطفل</h3>
+                                </div>
+
+                                <input name="user_id" type="text" value="{{ $user->id }}" hidden>
+                                @error('user_id')
+                                    <strong class="text-danger">{{ $message }}</strong>
+                                @enderror
+
+                                <div class="row mb-4">
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
                                         <h5>اسم الطفل ثلاثي</h5>
                                         <input name="kid_name" type="text" class="form-control"
                                             placeholder="اسم الطفل يكتب هنا" value="{{ old('kid_name') }}">
                                         @error('kid_name')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
@@ -59,7 +186,7 @@
                                             </option>
                                         </select>
                                         @error('gender')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
@@ -68,23 +195,26 @@
                                             placeholder="mm/dd/yyyy" value="{{ old('birth_date') }}">
                                         {{-- <i class="la la-calendar"></i> --}}
                                         @error('birth_date')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
                                         <h5>صلة القرابة</h5>
                                         <input name="relative_relation" type="text" class="form-control"
-                                            placeholder="صلةالقرابه تكتب هنا" value="{{ old('relative_relation') }}">
+                                            placeholder="صلة القرابه تكتب هنا" value="{{ old('relative_relation') }}">
                                         @error('relative_relation')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
+                                </div>
+
+                                <div class="row mb-4">
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
                                         <h5>عنوان المنزل</h5>
                                         <input name="home_address" type="text" class="form-control"
                                             placeholder="الحى - الشارع" value="{{ old('home_address') }}">
                                         @error('home_address')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
@@ -97,7 +227,7 @@
                                             </option>
                                         </select>
                                         @error('is_child_registered_school')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3 col-sm-6 col-xs-12">
@@ -105,130 +235,128 @@
                                         <input name="educational_level" type="text" class="form-control"
                                             placeholder="اكتب المرحلة الدراسية" value="{{ old('educational_level') }}">
                                         @error('educational_level')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <h3>الرجاء إضافة شخصين في الحالات الطارئة</h3>
-                                    </div>
-                                    <div class="list-person col-xs-12">
-                                        <div class="form-group col-md-4 col-sm-12 col-xs-12">
-                                            <h6>1</h6>
-                                            <div>
-                                                <h5>الاسم الثلاثي</h5>
-                                                <input name="emergency_first_name" type="text" class="form-control"
-                                                    value="{{ old('emergency_first_name') }}">
-                                                @error('emergency_first_name')
-                                                    <p class="errors">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
-                                            <h5>رقم الجوال</h5>
-                                            <input name="emergency_first_phone" type="text" class="form-control"
-                                                value="{{ old('emergency_first_phone') }}">
-                                            @error('emergency_first_phone')
-                                                <p class="errors">{{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
-                                            <h5>صلة القرابة</h5>
-                                            <input name="emergency_first_relation" type="text" class="form-control"
-                                                value="{{ old('emergency_first_relation') }}">
-                                            @error('emergency_first_relation')
-                                                <p class="errors">{{ $message }}</p>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12  mb-4 mt-4">
+                                    <h3 class="text-primary">الرجاء إضافة شخصين في الحالات الطارئة</h3>
+                                </div>
+
+                                <div class="row mb-4">
+                                    {{-- <h6>بيانات الشخص الاول</h6> --}}
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <div>
+                                            <h5>الاسم الثلاثي</h5>
+                                            <input name="emergency_first_name" type="text" class="form-control"
+                                                value="{{ old('emergency_first_name') }}"
+                                                placeholder="الاسم الثلاثى يكتب هنا">
+                                            @error('emergency_first_name')
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="list-person col-xs-12">
-                                        <div class="form-group col-md-4 col-sm-12 col-xs-12">
-                                            <h6>2</h6>
-                                            <div>
-                                                <h5>الاسم الثلاثي</h5>
-                                                <input name="emergency_second_name" type="text" class="form-control"
-                                                    value="{{ old('emergency_second_name') }}">
-                                                @error('emergency_second_name')
-                                                    <p class="errors">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
-                                            <h5>رقم الجوال</h5>
-                                            <input name="emergency_second_phone" type="text" class="form-control"
-                                                value="{{ old('emergency_second_phone') }}">
-                                            @error('emergency_second_phone')
-                                                <p class="errors">{{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
-                                            <h5>صلة القرابة</h5>
-                                            <input name="emergency_second_relation" type="text" class="form-control"
-                                                value="{{ old('emergency_second_relation') }}">
-                                            @error('emergency_second_relation')
-                                                <p class="errors">{{ $message }}</p>
-                                            @enderror
-                                        </div>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>رقم الجوال</h5>
+                                        <input name="emergency_first_phone" type="text" class="form-control"
+                                            value="{{ old('emergency_first_phone') }}" placeholder="رقم الجوال يكتب هنا">
+                                        @error('emergency_first_phone')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                     </div>
-                                    <div class="form-group col-xs-12">
-                                        <button type="button" class="btn next-step">التالى</button>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>صلة القرابة</h5>
+                                        <input name="emergency_first_relation" type="text" class="form-control"
+                                            value="{{ old('emergency_first_relation') }}"
+                                            placeholder="صلة القرابه تكتب هنا">
+                                        @error('emergency_first_relation')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="kid_enrollment">
-                                <div class="c-card col-xs-12">
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <h3>الرجاء أضافة أسماء الأشخاص المسموح لهم بأخذ الطالب من المركز</h3>
-                                    </div>
-                                    <div class="append-persons col-xs-12">
-                                        <div class="list-person col-xs-12" id="p_spec">
-                                            <div class="form-group col-md-4 col-sm-12 col-xs-12">
-                                                <h6>1</h6>
-                                                <div>
-                                                    <h5>الاسم الثلاثي</h5>
-                                                    <input name="addmore[0][person_name]" type="text"
-                                                        class="form-control"
-                                                        value="{{ old('addmore[0][person_name]') }}">
-                                                    @error('addmore.*.person_name')
-                                                        <p class="errors">{{ $message }}</p>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-md-3 col-sm-6 col-xs-12">
-                                                <h5>رقم الجوال</h5>
-                                                <input name="addmore[0][person_phone]" type="text"
-                                                    class="form-control" value="{{ old('addmore[0][person_phone]') }}">
-                                                @error('addmore.*.person_phone')
-                                                    <p class="errors">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group col-md-3 col-sm-6 col-xs-12">
-                                                <h5>صلة القرابة</h5>
-                                                <input name="addmore[0][relation_to_kid]" type="text"
-                                                    class="form-control"
-                                                    value="{{ old('addmore[0][relation_to_kid]') }}">
-                                                @error('addmore.*.relation_to_kid')
-                                                    <p class="errors">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            {{-- <div class="form-group col-md-2 col-sm-4 col-xs-12">
-                                                <button type="button" class="btn btn-danger remove-tr">Remove</button>
-                                            </div> --}}
+
+                                <div class="row mb-4">
+                                    {{-- <h6>بيانات الشخص الثانى</h6> --}}
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <div>
+                                            <h5>الاسم الثلاثي</h5>
+                                            <input name="emergency_second_name" type="text" class="form-control"
+                                                value="{{ old('emergency_second_name') }}"
+                                                placeholder="الاسم الثلاثى يكتب هنا">
+                                            @error('emergency_second_name')
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group col-xs-12">
-                                        <button type="button" class="btn add-n">
-                                            <i class="la la-plus"></i>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>رقم الجوال</h5>
+                                        <input name="emergency_second_phone" type="text" class="form-control"
+                                            value="{{ old('emergency_second_phone') }}"
+                                            placeholder="رقم الجوال يكتب هنا">
+                                        @error('emergency_second_phone')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>صلة القرابة</h5>
+                                        <input name="emergency_second_relation" type="text" class="form-control"
+                                            value="{{ old('emergency_second_relation') }}"
+                                            placeholder="صلة القرابه تكتب هنا">
+                                        @error('emergency_second_relation')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12  mb-4 mt-4">
+                                    <h3 class="text-primary">الرجاء أضافة أسماء الأشخاص المسموح لهم بأخذ الطالب من
+                                        المركز</h3>
+                                </div>
+
+                                <div class="row mb-4" id="p_spec">
+                                    {{-- <h6>1</h6> --}}
+                                    <div class="form-group col-md-3 col-sm-12 col-xs-12">
+                                        <h5>الاسم الثلاثي</h5>
+                                        <input name="addmore[0][person_name]" type="text" class="form-control"
+                                            value="{{ old('addmore.*.person_name') }}"
+                                            placeholder="الاسم الثلاثي يكتب هنا">
+                                        @error('addmore.*.person_name')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>رقم الجوال</h5>
+                                        <input name="addmore[0][person_phone]" type="text" class="form-control"
+                                            value="{{ old('addmore.*.person_phone') }}"
+                                            placeholder="رقم الجوال يكتب هنا">
+                                        @error('addmore.*.person_phone')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>صلة القرابة</h5>
+                                        <input name="addmore[0][relation_to_kid]" type="text" class="form-control"
+                                            value="{{ old('addmore.*.relation_to_kid') }}"
+                                            placeholder="صلة القرابة تكتب هنا">
+                                        @error('addmore.*.relation_to_kid')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                        <h5>لأضافة أشخاص اخرين</h5>
+                                        <button type="button" class="btn btn-success add-n">
+                                            <i class="bi bi-plus-lg"></i>
                                             اضافة شخص اخر
                                         </button>
                                     </div>
-                                    <div class="form-group col-xs-12">
-                                        <button type="button" class="btn prev-step">السابق</button>
-                                        <button type="button" class="btn next-step">التالى</button>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="kid_medics">
-                                <div class="c-card col-xs-12">
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12 mb-4 mt-4">
+                                    <h3 class="text-primary">معلومات طبيه عن الطفل</h3>
+                                </div>
+
+                                <div class="row mb-4">
                                     <div class="form-group col-md-5 col-sm-6 col-xs-12">
                                         <h5>هل يعاني الطالب من الحساسية الغذائية</h5>
                                         <div class="f-labels">
@@ -243,19 +371,22 @@
                                                 <span>لا</span>
                                             </label>
                                             @error('kid_suffer_food_allergies')
-                                                <p class="errors">{{ $message }}</p>
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-7 col-sm-6 col-xs-12">
                                         <h5>في حال الإجابة بنعم الرجاء كتابة المواد الغذائية المسببة للحساسية</h5>
                                         <input name="if_yes_suffer_food_allergens" type="text" class="form-control"
                                             value="{{ old('if_yes_suffer_food_allergens') }}">
                                         @error('if_yes_suffer_food_allergens')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
+                                </div>
 
+                                <div class="row mb-4">
                                     <div class="form-group col-md-5 col-sm-6 col-xs-12">
                                         <h5>هل يعاني الطالب من أي نوع آخر من الحساسية</h5>
                                         <div class="f-labels">
@@ -270,7 +401,7 @@
                                                 <span>لا</span>
                                             </label>
                                             @error('kid_suffer_other_type_of_allergy')
-                                                <p class="errors">{{ $message }}</p>
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
@@ -279,13 +410,17 @@
                                         <input name="if_yes_state_the_type_of_allergy" type="text"
                                             class="form-control" value="{{ old('if_yes_state_the_type_of_allergy') }}">
                                         @error('if_yes_state_the_type_of_allergy')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
+                                </div>
 
+                                <div class="row mb-4">
                                     <div class="form-group col-md-5 col-sm-6 col-xs-12">
-                                        <h5>في حال تعرض الطالب لإحدى مسببات الحساسية هل يتطلب استخدام حقنة الأدرينالين
-                                            (الإبينفرين)، في حالة الطوارئ، أي عند ظهور أي عرض من أعراض صدمة الحساسية</h5>
+                                        <h5>في حال تعرض الطالب لإحدى مسببات الحساسية هل يتطلب استخدام حقنة
+                                            الأدرينالين
+                                            (الإبينفرين)، في حالة الطوارئ، أي عند ظهور أي عرض من أعراض صدمة الحساسية
+                                        </h5>
                                         <div class="f-labels">
                                             <label>
                                                 <input name="use_injection_of_epinephrine" type="radio" value="نعم"
@@ -298,23 +433,28 @@
                                                 <span>لا</span>
                                             </label>
                                             @error('use_injection_of_epinephrine')
-                                                <p class="errors">{{ $message }}</p>
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-7 col-sm-6 col-xs-12">
-                                        <h5>في حال الاجابة ب لا الرجاء تقديم تقرير طبي من الطبيب يشير الى أن الحالة لا تتطلب
+                                        <h5>في حال الاجابة ب لا الرجاء تقديم تقرير طبي من الطبيب يشير الى أن الحالة
+                                            لا تتطلب
                                             استخدام الحقن</h5>
                                         <div class="f-upload">
                                             <input name="medical_report_image" type="file">
                                             <i class="la la-file-text"></i>
-                                            <input type="text" class="form-control" readonly=""
+                                            <input type="text" class="form-control mt-4" readonly=""
                                                 placeholder="يرجي ارفاق التقرير هنا">
                                             @error('medical_report_image')
-                                                <p class="errors">{{ $message }}</p>
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row mb-4">
                                     <div class="form-group col-md-5 col-sm-6 col-xs-12">
                                         <h5>هل الطالب من ذوي الاحتياجات الخاصة</h5>
                                         <div class="f-labels">
@@ -328,35 +468,37 @@
                                                     @if (old('kid_with_special_needs') == 'لا') checked @endif>
                                                 <span>لا</span>
                                             </label>
-                                            @error('kid_with_special_needs')
-                                                <p class="errors">{{ $message }}</p>
-                                            @enderror
                                         </div>
+                                        @error('kid_with_special_needs')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                     </div>
+
                                     <div class="form-group col-md-7 col-sm-6 col-xs-12">
                                         <h5>في حال الإجابة بنعم الرجاء وصف الحالة</h5>
                                         <input name="if_yes_special_needs" type="text" class="form-control"
                                             value="{{ old('if_yes_special_needs') }}">
                                         @error('if_yes_special_needs')
-                                            <p class="errors">{{ $message }}</p>
+                                            <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
-                                    </div>
-                                    <div class="form-group col-xs-12">
-                                        <h5>الرجاء كتابة أي أعراض صحية يعاني منها الطالب</h5>
-                                        <textarea name="another_health_symptoms" class="form-control">{{ old('another_health_symptoms') }}</textarea>
-                                        @error('another_health_symptoms')
-                                            <p class="errors">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-xs-12">
-                                        <button type="button" class="btn prev-step">السابق</button>
-                                        <button type="button" class="btn next-step">التالى</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="kid_docs">
-                                <div class="c-card col-xs-12">
+
+                                <div class="row mb-4">
+                                    <div class="form-group col-xs-12">
+                                        <h5>الرجاء كتابة أي أعراض صحية يعاني منها الطالب</h5>
+                                        <textarea name="another_health_symptoms" class="form-control"rows='3'>{{ old('another_health_symptoms') }}</textarea>
+                                        @error('another_health_symptoms')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12 mb-4 mt-4 ">
+                                    <h3 class="text-primary">المستندات المطلوبه</h3>
+                                </div>
+
+                                <div class="row mb-4">
                                     <div class="form-group col-md-4 col-xs-12">
                                         <div class="prof-img">
                                             <label>
@@ -367,7 +509,7 @@
                                             </label>
                                             <p>صورة شخصية حديثة للطفل</p>
                                             @error('recent_kid_photo')
-                                                <strong class="errors">{{ $message }}</strong>
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
@@ -392,10 +534,13 @@
                                             </label>
                                             <p>صورة من شهادة الميلاد</p>
                                             @error('birth_record_image')
-                                                <strong class="errors">{{ $message }}</strong>
+                                                <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row mb-4">
                                     <div class="form-group col-md-4 col-xs-12">
                                         <div class="prof-img">
                                             <label>
@@ -418,8 +563,11 @@
                                             <p>مستندات أخرى</p>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6 col-xs-12">
-                                        <div class="chx-itm">
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="form-group col-md-3 col-xs-12">
+                                        <div class="mb-1">
                                             <label>
                                                 <input name="terms" type="checkbox" value="1"
                                                     @if (old('terms') == '1') checked @endif>
@@ -427,70 +575,48 @@
                                                     <a href="#"> الشروط والاحكام</a>
                                                 </span>
                                             </label>
-                                            @error('terms')
-                                                <p class="errors">{{ $message }}</p>
-                                            @enderror
                                         </div>
+                                        @error('terms')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                     </div>
-                                    <div class="form-group col-md-6 col-xs-12">
-                                        <div class="chx-itm">
+                                    <div class="form-group col-md-9 col-xs-12">
+                                        <div class="mb-1">
                                             <label>
                                                 <input name="images_terms" type="checkbox" value="1"
                                                     @if (old('images_terms') == '1') checked @endif>
                                                 <span>اوافق على نشر صور الطفل المشترك في قنوات التواصل الاجتماعي والموقع
                                                     والتطبيق والمنشورات الخاصة بمركز سوبرهيروزلاند</span>
                                             </label>
-                                            @error('images_terms')
-                                                <p class="errors">{{ $message }}</p>
-                                            @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-group col-xs-12">
-                                        <button type="button" class="btn prev-step">السابق</button>
-                                        <button type="submit" class="btn">اضافة</button>
+                                        @error('images_terms')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">أضافة الطفل</button>
+                                </div>
+                            </form>
+
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
+    </main><!-- End #main -->
 @endsection
-@push('model')
-    <div class="modal fade" id="addition_success">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">
-                    <i class="la la-close"></i>
-                </button>
-                <div class="modal-body">
-                    <img src="images/check.svg" alt="">
-                    <p>تم إضافة الطفل بنجاح وسيتم
-                        التواصل معكم لكى يتم تفعيل
-                        حساب الطفل</p>
-                    <a href="#" class="btn">الذهاب للملف الشخصي</a>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-@endpush
-@push('script')
-    {{-- <script>
-        $('.add-n').click(function() {
-            $('#p_spec').clone().appendTo('.append-persons');
-        });
-    </script> --}}
+
+@push('scripts')
     <script type="text/javascript">
         var i = 0;
         $('.add-n').click(function() {
             ++i;
             $('#p_spec').append(
-                '<div class="form-group col-md-4 col-sm-12 col-xs-12"><h6>' + ++i +
-                '</h6><div><h5>الاسم الثلاثي</h5><input name="addmore[' +
+                '<div class="form-group col-md-3 col-sm-12 col-xs-12"><h5>الاسم الثلاثي</h5><input name="addmore[' +
                 --i +
-                '][person_name]" type="text" class="form-control"></div></div><div class = "form-group col-md-3 col-sm-6 col-xs-12" ><h5> رقم الجوال </h5><input name = "addmore[' +
+                '][person_name]" type="text" class="form-control"></div><div class = "form-group col-md-3 col-sm-6 col-xs-12" ><h5> رقم الجوال </h5><input name = "addmore[' +
                 i +
                 '][person_phone]" type = "text" class = "form-control" value = "{{ old('person_phone') }}"> </div><div class = "form-group col-md-3 col-sm-6 col-xs-12" ><h5> صلة القرابة </h5> <input name = "addmore[' +
                 i +
@@ -498,8 +624,8 @@
             );
         });
 
-        $(document).on('click', '.remove-tr', function() {
-            $(this).parents('#p_spec').remove();
-        });
+        // $(document).on('click', '.remove-tr', function() {
+        //     $(this).parents('#p_spec').remove();
+        // });
     </script>
 @endpush

@@ -201,7 +201,7 @@ class UserController extends Controller
             //     'addmore.*.relation_to_kid' =>  ['required' , 'string' , 'max:255'],
             // ]);
 
-            $data = $request->except('addmore' , '_token');
+            $data = $request->except('addmore' , '_token' , 'medical_report_image' , 'recent_kid_photo' , 'family_card_image' , 'birth_record_image' , 'vaccination_card_image' , 'other_documents');
             // dd($data);
             $data['medical_report_image'] = $this->uploadImage($request, 'medical_report_image', 'kid_images');
             $data['recent_kid_photo'] = $this->uploadImage($request, 'recent_kid_photo', 'kid_images');

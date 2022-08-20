@@ -23,6 +23,21 @@ class Kid extends Model
         return $this->hasMany(PersonsTakeKid::class, 'kid_id', 'id');
     }
 
+    public function images()
+    {
+        return $this->hasMany(KidImage::class, 'kid_id', 'id');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(KidMessage::class, 'kid_id', 'id');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(KidReport::class, 'kid_id', 'id');
+    }
+
     public function getAgeAttribute()
 {
     return Carbon::parse($this->attributes['birth_date'])->age;

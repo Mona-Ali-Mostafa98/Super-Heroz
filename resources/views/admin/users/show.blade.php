@@ -9,7 +9,6 @@
             <div class="col-sm-6 d-flex justify-content-end">
                 <a href="{{ route('admin.users.index') }}" class="btn btn-primary mb-2 "><i
                         class="bi bi-caret-left-fill ms-1"></i> رجوع</a>
-                </h1>
             </div>
         </div><!-- End Page Title -->
         <section class="section">
@@ -70,41 +69,54 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
-                                    <div class="col-lg-3 col-md-4 label text-primary fw-bold">الأطفال التابعين للمستخدم
+                                <div class="row mb-4 text-center">
+                                    <div class="col-sm-6 d-flex justify-content-start label text-primary fw-bold">الأطفال
+                                        التابعين لهذا المستخدم
                                     </div>
-                                    <div class="col-lg-9 col-md-8">
-                                        <table class="table table-hover table-striped table-bordered border-dark"
-                                            style="width: 100%">
-                                            <thead>
+                                    <div class="col-sm-6 d-flex justify-content-end">
+                                        <a href="{{ route('admin.add_kid_view', $user->id) }}"
+                                            class="btn btn-outline-primary mb-2 ">
+                                            أضافة طفل</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <table class="table table-hover table-striped table-bordered border-dark"
+                                        style="width: 100%">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                {{-- <th scope="col">ID</th> --}}
+                                                <th scope="col">الأسم</th>
+                                                <th scope="col">رقم الهاتف</th>
+                                                <th scope="col">البريد الالكترونى</th>
+                                                <th scope="col">تاريخ الانشاء</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($kids as $kid)
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    {{-- <th scope="col">ID</th> --}}
-                                                    <th scope="col">الأسم</th>
-                                                    <th scope="col">رقم الهاتف</th>
-                                                    <th scope="col">البريد الالكترونى</th>
-                                                    <th scope="col">تاريخ الانشاء</th>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td class="text-primary fw-bold"><a
+                                                            href="{{ route('admin.info_about_kid', $kid->id) }}">{{ $kid->kid_name }}</a>
+                                                    </td>
+                                                    <td>{{ $kid->gender }}</td>
+                                                    <td>{{ $kid->birth_date }}</td>
+                                                    <td>{{ $kid->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($kids as $kid)
-                                                    <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td class="text-primary fw-bold"><a
-                                                                href="{{ route('admin.info_about_kid', $kid->id) }}">{{ $kid->kid_name }}</a>
-                                                        </td>
-                                                        <td>{{ $kid->gender }}</td>
-                                                        <td>{{ $kid->birth_date }}</td>
-                                                        <td>{{ $kid->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                        {{-- <div class="mt-4 mb-3 d-flex justify-content-end">
+                                            @empty
+                                                <tr>
+                                                    <td class="text-center text-muted fs-4" colspan="6">لم يقم هذا
+                                                        المستخدم بأضافة أطفال حتى الان....
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                    {{-- <div class="mt-4 mb-3 d-flex justify-content-end">
                                             {{ $kids->links() }}
                                         </div> --}}
-                                    </div>
                                 </div>
                             </div>
 

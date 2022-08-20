@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\KidController;
 use App\Http\Controllers\Admin\PolicyController;
 use App\Http\Controllers\Admin\ServiceBookingController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/booking_services', [ServiceBookingController::class, 'index'])->name('booking_services.index');
         Route::delete('/booking_services/{booking_service}', [ServiceBookingController::class, 'destroy'])->name('booking_services.destroy');
+
+        Route::get('/add_kid_view/{user}', [KidController::class, 'add_kid_view'])->name('add_kid_view');
+        Route::post('/add_kid', [KidController::class, 'add_kid'])->name('add_kid');
+
+
+        Route::get('/send_report_view/{kid}', [KidController::class, 'send_report_view'])->name('send_report_view');
+        Route::post('/send_report', [KidController::class, 'send_report'])->name('send_report');
+
+        Route::get('/send_image_view/{kid}', [KidController::class, 'send_image_view'])->name('send_image_view');
+        Route::post('/send_image', [KidController::class, 'send_image'])->name('send_image');
+
+
+        Route::get('/send_message_view/{kid}', [KidController::class, 'send_message_view'])->name('send_message_view');
+        Route::post('/send_message', [KidController::class, 'send_message'])->name('send_message');
+
 
 });
 
