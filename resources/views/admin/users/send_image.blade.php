@@ -25,6 +25,12 @@
                                         <strong class="alert alert-danger">{{ $message }}</strong>
                                     @enderror
                                 </div>
+                                <div class="row">
+                                    <input name="user_id" type="text" value="{{ $user->id }}" hidden>
+                                    @error('user_id')
+                                        <strong class="alert alert-danger">{{ $message }}</strong>
+                                    @enderror
+                                </div>
                                 <div class="row mb-4">
                                     <label class="col-sm-2 col-form-label">الصوره</label>
                                     <div class="col-sm-10">

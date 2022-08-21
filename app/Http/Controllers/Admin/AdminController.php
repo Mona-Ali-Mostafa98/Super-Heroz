@@ -50,7 +50,7 @@ class AdminController extends Controller
         }
         else
         {
-            return redirect()->route('admin.settings.index')->with('success' , 'تم تسجيل الدخول بنجاح');
+            return redirect()->route('admin.dashboard')->with('success' , 'تم تسجيل الدخول بنجاح');
 
         }
     }

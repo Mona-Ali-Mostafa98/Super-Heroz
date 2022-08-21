@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKidRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\CenterClass;
 use App\Models\Kid;
+use App\Models\KidImage;
+use App\Models\KidMessage;
+use App\Models\KidReport;
 use App\Models\PersonsTakeKid;
 use App\Models\User;
 use App\Traits\UploadImageTrait;
@@ -241,5 +245,23 @@ class UserController extends Controller
         //dd($kids);
 
         return  view('website.my-kids', compact('kids' ,'user'));
+    }
+
+    public function kid_profile_view(Kid $kid){
+        $user = User::where('id',Auth::user()->id)->first();      // dd($user->id);
+        $kid_images = KidImage::where('kid_id' , $kid->id)->get();
+        $kid_reports = KidReport::where('kid_id' , $kid->id)->get();
+        $kid_messages = KidMessage::where('kid_id' , $kid->id)->get();
+        $kid_class = CenterClass::where('title' , $kid->educational_level)->first();
+
+        return view('website.kids-list' , compact('kid' , 'user' , 'kid_images' , 'kid_reports' , 'kid_messages' , 'kid_class'));
+    }
+
+
+    public function notifications_view(){
+        $user = User::where('id',Auth::user()->id)->first();      // dd($user->id);
+        $kid = Kid::where('user_id' , Auth::user()->id)->first();
+        // dd(Auth::user()->notifications);
+        return view('website.notifications' , compact('kid' ,'user'));
     }
 }

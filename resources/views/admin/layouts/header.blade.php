@@ -42,39 +42,74 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('website.index') }}" class="logo d-flex align-items-center">
-                {{-- <img src="{{ asset('images/settings/' . $setting->logo) }}" alt=""> --}}
+                <img src="{{ asset('website/images/favicon.png') }}" alt="">
                 <span class="m-3 d-none d-lg-block">سوبرهيروزلاند</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
+
         <nav class="header-nav me-auto">
             <ul class="d-flex align-items-center">
-                <li class="nav-item dropdown pe-3">
-                    <a class="nav-link nav-profile d-flex align-items-center pe-2" href="{{ route('admin.logout') }}">
-                        <span>تسجيل الخروج</span>
-                    </a>
-                </li>
-                {{-- <li class="nav-item dropdown pe-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        <span
+                            class="badge bg-danger badge-number">{{ Auth::guard('admin')->user()->notifications->count() }}</span>
+                    </a><!-- End Notification Icon -->
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header" style="direction: rtl">
+                            لديك عدد {{ Auth::guard('admin')->user()->notifications->count() }} من الأشعارات الجديده
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">عرض</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        @foreach (Auth::guard('admin')->user()->notifications as $notification)
+                            <li class="notification-item">
+                                {{-- <i class="bi bi-exclamation-circle text-warning"></i> --}}
+                                <div>
+                                    <h4 style="direction: rtl">لقد ارسل لك المستخدم "{{ $notification->data['name'] }}
+                                        "رساله</h4>
+                                    {{-- <h4>{{ $notification->data['email'] }}</h4> --}}
+                                    <p>{{ $notification->created_at->diffForHumans(now()) }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        @endforeach
+                        <li class="dropdown-footer">
+                            <a href="#">Show all notifications</a>
+                        </li>
 
+                    </ul><!-- End Notification Dropdown Items -->
+
+                </li>
+
+
+                <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                        data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
+                        data-bs-toggle="dropdown" style="direction: ltr">
+                        <img src="{{ asset('storage/' . Auth::guard('admin')->user()->image) }}" alt="Profile"
+                            class="rounded-circle">
+                        <span
+                            class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::guard('admin')->user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>{{ $admin->name }}</h6>
-                            <span>{{ $admin->type }}</span>
+                            <h6>{{ Auth::guard('admin')->user()->name }}</h6>
+                            <span>{{ Auth::guard('admin')->user()->type }}</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>My Profile</span>
+                            <a class="dropdown-item d-flex align-items-center"
+                                href="{{ route('admin.admins.show', Auth::guard('admin')->user()->id) }}">
+                                <i class="bi bi-person ms-2"></i>
+                                <span>الملف الشخصى</span>
                             </a>
                         </li>
                         <li>
@@ -82,34 +117,16 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.logout') }}">
+                                <i class="bi bi-box-arrow-right ms-2"></i>
+                                <span>تسجيل الخروج</span>
                             </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
-                        </li>
-
                     </ul><!-- End Profile Dropdown Items -->
-                </li> --}}
+                </li>
                 <!-- End Profile Nav -->
             </ul>
         </nav>

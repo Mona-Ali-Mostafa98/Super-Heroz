@@ -50,13 +50,6 @@ class UserController extends Controller
         return view('admin.users.show', compact('user' , 'kids'));
     }
 
-    public function info_about_kid(Kid $kid)
-    {
-        $user = $kid->user;
-
-        return view('admin.users.show_kid' , compact('kid' , 'user'));
-    }
-
     public function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));

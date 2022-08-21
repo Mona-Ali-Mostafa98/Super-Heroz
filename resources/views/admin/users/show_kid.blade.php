@@ -21,15 +21,18 @@
                                     تفاصيل عن الطفل "{{ $kid->kid_name }}" التابع للمستخدم "{{ $user->name }}"
                                 </h5>
                                 <div class="mt-3 col-sm-6 d-flex justify-content-end">
-                                    <span class="m-1"> <a href="{{ route('admin.send_report_view', $kid->id) }}"
+                                    <span class="m-1"> <a
+                                            href="{{ route('admin.send_report_view', ['user' => $user->id, 'kid' => $kid->id]) }}"
                                             class="btn btn-outline-primary mb-2 "></i>
                                             رفع تقرير</a>
                                     </span>
-                                    <span class="m-1"> <a href="{{ route('admin.send_image_view', $kid->id) }}"
+                                    <span class="m-1"> <a
+                                            href="{{ route('admin.send_image_view', ['user' => $user->id, 'kid' => $kid->id]) }}"
                                             class="btn btn-outline-primary mb-2 "></i>
                                             رفع صوره</a>
                                     </span>
-                                    <span class="m-1"> <a href="{{ route('admin.send_message_view', $kid->id) }}"
+                                    <span class="m-1"> <a
+                                            href="{{ route('admin.send_message_view', ['user' => $user->id, 'kid' => $kid->id]) }}"
                                             class="btn btn-outline-primary mb-2 "></i>
                                             أرسال رساله</a>
                                     </span>

@@ -974,8 +974,8 @@ button {
 }
 
 .s-wrap .kids-list .kids-bottom .gallery-item .d-item a img {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 100px;
     object-fit: cover;
 }
 

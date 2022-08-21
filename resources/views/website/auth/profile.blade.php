@@ -15,7 +15,7 @@
         <div class="s-wrap col-xs-12">
             <div class="container">
                 <button type="button" class="op-sidebar">
-                    <img src="images/pic.png" alt="">
+                    <img src="{{ asset('storage/' . $user->image) }}" alt="">
                 </button>
                 <div class="s-sidebar col-md-3 col-xs-12">
                     <div class="c-card">
@@ -44,7 +44,7 @@
                                     <a href="{{ route('website.user.kids') }}">اطفالى</a>
                                 </li>
                                 <li>
-                                    {{-- <a href="#">الاشعارات</a> --}}
+                                    <a href="{{ route('website.notifications') }}">الاشعارات</a>
                                 </li>
                             </ul>
                         </div>

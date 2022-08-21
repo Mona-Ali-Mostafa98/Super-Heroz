@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\ContactUs;
+use App\Notifications\ContactUsNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ContactUsController extends Controller
 {
@@ -28,7 +31,13 @@ class ContactUsController extends Controller
         'message.min' => ' مطلوب ادخال نص الرساله لا يقل عن 10 احرف',
         ]);
 
-        ContactUs::create($data);
+        $contact_us = ContactUs::create($data);
+
+        $sdmins = Admin::all();
+
+        Notification::send($sdmins, new ContactUsNotification($contact_us));
+        // $sdmins->notify(new ContactUsNotification($contact_us));
+        // dd('Notification send!');
 
         return redirect()->route('website.index')
             ->with('success' , "تم أرسال رسالتك بنجاح ! شكرا لتواصلك  معنا");

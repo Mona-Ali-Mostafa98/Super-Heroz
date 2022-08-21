@@ -58,6 +58,8 @@ Route::prefix('website')->name('website.')->group(function () {
     Route::get('/add_kid_view', [UserController::class, 'add_kid_view'])->name('add_kid_view')->middleware('auth');
     Route::post('/add_kid/store', [UserController::class, 'add_kid'])->name('add_kid.store')->middleware('auth');
     Route::get('/user/kids', [UserController::class, 'kids'])->name('user.kids')->middleware('auth');
+    Route::get('/kid_profile_view/{kid}', [UserController::class, 'kid_profile_view'])->name('kid_profile_view')->middleware('auth');
+    Route::get('/user/notifications', [UserController::class, 'notifications_view'])->name('notifications')->middleware('auth');
 
     Route::get('/website/policies', [PolicyController::class, 'index'])->name('policies');
 

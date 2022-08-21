@@ -33,6 +33,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('isAdmin:admin')->group(function(){
         Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
         Route::resource('settings', SettingController::class)->only('index', 'show', 'update', 'edit');
         Route::resource('social_links', SocialLinkController::class)->except('create','store');
@@ -48,7 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('policies', PolicyController::class);
 
-        Route::get('/info_about_kid/{kid}', [UserController::class, 'info_about_kid'])->name('info_about_kid');
+        Route::get('/info_about_kid/{kid}', [KidController::class, 'info_about_kid'])->name('info_about_kid');
 
         Route::get('/booking_services', [ServiceBookingController::class, 'index'])->name('booking_services.index');
         Route::delete('/booking_services/{booking_service}', [ServiceBookingController::class, 'destroy'])->name('booking_services.destroy');
@@ -57,14 +58,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/add_kid', [KidController::class, 'add_kid'])->name('add_kid');
 
 
-        Route::get('/send_report_view/{kid}', [KidController::class, 'send_report_view'])->name('send_report_view');
+        Route::get('/send_report_view/{user}/{kid}', [KidController::class, 'send_report_view'])->name('send_report_view');
         Route::post('/send_report', [KidController::class, 'send_report'])->name('send_report');
 
-        Route::get('/send_image_view/{kid}', [KidController::class, 'send_image_view'])->name('send_image_view');
+        Route::get('/send_image_view/{user}/{kid}', [KidController::class, 'send_image_view'])->name('send_image_view');
         Route::post('/send_image', [KidController::class, 'send_image'])->name('send_image');
 
 
-        Route::get('/send_message_view/{kid}', [KidController::class, 'send_message_view'])->name('send_message_view');
+        Route::get('/send_message_view/{user}/{kid}', [KidController::class, 'send_message_view'])->name('send_message_view');
         Route::post('/send_message', [KidController::class, 'send_message'])->name('send_message');
 
 

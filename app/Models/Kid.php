@@ -5,10 +5,11 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Kid extends Model
 {
-    use HasFactory;
+    use HasFactory , Notifiable;
 
     protected $guarded = [];
     // protected $fillable = ['terms' , 'images_terms'];

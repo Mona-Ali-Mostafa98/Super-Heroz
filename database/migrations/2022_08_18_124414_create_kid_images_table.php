@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('kid_images', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedBigInteger('kid_id');
             $table->foreign('kid_id')->references('id')->on('kids')->constrained()->onUpdate('cascade')->onDelete('cascade');
